@@ -21,11 +21,37 @@ export async function toggleReviews(gameId, button) {
     list.style.display = 'flex';
     if (form) form.style.display = 'flex';
     button.textContent = 'Ocultar';
+    button.classList.add('expanded');
+    button.setAttribute('aria-expanded', 'true');
     await loadReviews(gameId);
   } else {
     list.style.display = 'none';
     if (form) form.style.display = 'none';
-    button.textContent = 'Ver';
+    const count = button.dataset.count || '0';
+    button.textContent = `Reseñas (${count})`;
+    button.classList.remove('expanded');
+    button.setAttribute('aria-expanded', 'false');
+  }
+}
+
+/**
+ * Toggle the rating form for a game.
+ * @param {number} gameId
+ * @param {HTMLButtonElement} button
+ */
+export function toggleRateForm(gameId, button) {
+  const form = document.getElementById(`rate-form-${gameId}`);
+  if (!form) return;
+
+  const isHidden = form.style.display === 'none';
+  form.style.display = isHidden ? 'flex' : 'none';
+  button.textContent = isHidden ? 'Cancelar' : 'Votar';
+  button.classList.toggle('expanded', isHidden);
+  button.setAttribute('aria-expanded', String(isHidden));
+
+  if (isHidden) {
+    const input = document.getElementById(`rate-input-${gameId}`);
+    input?.focus();
   }
 }
 

@@ -64,6 +64,7 @@ import {
 import {
   submitRating,
   submitReview,
+  toggleRateForm,
   toggleReviews,
   voteReview,
 } from './reviews.js';
@@ -89,6 +90,7 @@ Object.assign(window, {
   submitReview,
   voteReview,
   toggleReviews,
+  toggleRateForm,
   deleteGame,
   openEditModal,
   openUserModal,
@@ -101,8 +103,9 @@ Object.assign(window, {
 });
 
 // Filter inputs.
-[filterName, filterConsole, filterRank, filterReviews, sortBy].forEach(el => {
-  el?.addEventListener('input', applyFilters);
+filterName?.addEventListener('input', applyFilters);
+[filterConsole, filterRank, filterReviews, sortBy].forEach(el => {
+  el?.addEventListener('change', applyFilters);
 });
 
 refreshBtn?.addEventListener('click', async () => {

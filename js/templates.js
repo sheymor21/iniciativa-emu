@@ -12,7 +12,7 @@ import { escapeHtml, pluralize, renderStars, roleLabel } from './utils.js';
  */
 export function scoreDisplay(game) {
   if (game.ratingCount === 0) {
-    return '<span class="rating-score" style="color:var(--text-muted);font-size:1rem;">Sin ranking</span>';
+    return '';
   }
   return `<span class="rating-score">${game.avgScore.toFixed(1)}</span> <span class="rating-stars">${renderStars(game.avgScore)}</span>`;
 }
@@ -36,40 +36,41 @@ export function votersDisplay(game) {
  * @param {boolean} options.showPlayOrderButton
  * @param {boolean} options.canVote
  * @param {boolean} options.canReview
- * @param {string} authorName
- * @param {boolean} authorReadonly
+ * @param {string} _authorName
+ * @param {boolean} _authorReadonly
  * @returns {string}
  */
-export function gameCard(game, options, authorName, authorReadonly) {
+export function gameCard(game, options, _authorName, _authorReadonly) {
   const favoriteHtml = options.isLoggedIn ? `
-    <button class="btn favorite-btn ${options.isFavorite ? 'active' : ''}" onclick="toggleFavorite(${game.id})" title="Favorito">
+    <button class="btn btn-icon favorite-btn ${options.isFavorite ? 'active' : ''}" onclick="toggleFavorite(${game.id})" title="Favorito" aria-label="Favorito">
       ${options.isFavorite ? '♥' : '♡'}
     </button>
   ` : '';
 
   const playedHtml = options.isLoggedIn ? `
-    <button class="btn played-btn ${options.isPlayed ? 'active' : ''}" onclick="togglePlayed(${game.id})" title="${options.isPlayed ? 'Jugado' : 'Marcar como jugado'}">
-      Jugado
+    <button class="btn btn-icon played-btn ${options.isPlayed ? 'active' : ''}" onclick="togglePlayed(${game.id})" title="${options.isPlayed ? 'Jugado' : 'Marcar como jugado'}" aria-label="${options.isPlayed ? 'Jugado' : 'Marcar como jugado'}">
+      ✓
     </button>
   ` : '';
 
   const playOrderCardHtml = options.showPlayOrderButton ? `
-    <button class="btn btn-secondary play-order-card-btn" onclick="addToPlayOrder(${game.id})" ${options.inPlayOrder ? 'disabled' : ''} title="Añadir a orden de juego">
-      ${options.inPlayOrder ? 'En orden' : 'Jugar después'}
+    <button class="btn btn-icon btn-secondary play-order-card-btn" onclick="addToPlayOrder(${game.id})" ${options.inPlayOrder ? 'disabled' : ''} title="Añadir a orden de juego" aria-label="Añadir a orden de juego">
+      ${options.inPlayOrder ? '✓' : '+'}
     </button>
   ` : '';
 
   const rateGameHtml = options.canVote ? `
     <div class="rate-game">
-      <input type="text" placeholder="Tu nombre" aria-label="Tu nombre" id="rate-author-${game.id}" maxlength="50" value="${escapeHtml(authorName)}" ${authorReadonly}>
-      <input type="number" min="1" max="10" placeholder="1-10" aria-label="Puntuación" id="rate-input-${game.id}">
-      <button class="btn btn-primary" onclick="submitRating(${game.id})">Votar</button>
+      <button class="btn btn-text rate-toggle" onclick="toggleRateForm(${game.id}, this)" aria-expanded="false">Votar</button>
+      <div class="rate-form" id="rate-form-${game.id}" style="display:none;">
+        <input type="number" min="1" max="10" placeholder="1-10" aria-label="Puntuación" id="rate-input-${game.id}">
+        <button class="btn btn-primary" onclick="submitRating(${game.id})">Enviar</button>
+      </div>
     </div>
   ` : '';
 
   const addReviewHtml = options.canReview ? `
     <div class="add-review" id="add-review-${game.id}" style="display:none;">
-      <input type="text" id="review-author-${game.id}" placeholder="Tu nombre" maxlength="50" value="${escapeHtml(authorName)}" ${authorReadonly}>
       <textarea id="review-content-${game.id}" placeholder="Escribe tu reseña..." maxlength="1000"></textarea>
       <button class="btn btn-primary" onclick="submitReview(${game.id})">Enviar reseña</button>
     </div>
@@ -79,24 +80,23 @@ export function gameCard(game, options, authorName, authorReadonly) {
     <div class="game-header">
       <h2 class="game-title">${escapeHtml(game.name)}</h2>
       <div class="game-header-actions">
-        <span class="game-console">${escapeHtml(game.console)}</span>
-        ${playedHtml}
         ${favoriteHtml}
+        ${playedHtml}
         ${playOrderCardHtml}
       </div>
     </div>
-    <div class="game-genre">${escapeHtml(game.genre)}</div>
+    <div class="game-meta">
+      <span class="game-console">${escapeHtml(game.console)}</span>
+      <span class="game-genre">${escapeHtml(game.genre)}</span>
+    </div>
     <div class="game-rating">
       ${scoreDisplay(game)}
-      <span class="rating-count">${game.ratingCount} ${pluralize(game.ratingCount, 'voto')}</span>
+      <span class="rating-count">${game.ratingCount === 0 ? 'Sin votos' : `${game.ratingCount} ${pluralize(game.ratingCount, 'voto')}`}</span>
     </div>
     ${votersDisplay(game)}
     ${rateGameHtml}
     <div class="reviews-section">
-      <div class="reviews-header">
-        <h3 class="reviews-title">Reseñas (${game.reviewCount})</h3>
-        <button class="btn btn-secondary" onclick="toggleReviews(${game.id}, this)">Ver</button>
-      </div>
+      <button class="btn btn-text reviews-toggle" onclick="toggleReviews(${game.id}, this)" data-count="${game.reviewCount}">Reseñas (${game.reviewCount})</button>
       <div class="review-list" id="reviews-${game.id}" style="display:none;"></div>
       ${addReviewHtml}
     </div>
