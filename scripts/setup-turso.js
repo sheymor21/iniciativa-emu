@@ -93,6 +93,18 @@ CREATE TABLE IF NOT EXISTS play_orders (
 
 CREATE INDEX IF NOT EXISTS idx_favorites_user ON favorites(user_id);
 CREATE INDEX IF NOT EXISTS idx_play_orders_user ON play_orders(user_id);
+
+CREATE TABLE IF NOT EXISTS played_games (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  game_id INTEGER NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  UNIQUE(user_id, game_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_played_games_user ON played_games(user_id);
 `;
 
 async function setup() {

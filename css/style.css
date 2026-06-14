@@ -215,6 +215,27 @@ input:focus, select:focus, textarea:focus {
   background: rgba(239, 68, 68, 0.1);
 }
 
+.played-btn {
+  background: transparent;
+  border: 1px solid var(--surface-light);
+  color: var(--text-muted);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  min-width: 2.5rem;
+}
+
+.played-btn:hover {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.played-btn.active {
+  color: var(--success);
+  border-color: var(--success);
+  background: rgba(34, 197, 94, 0.1);
+}
+
 .play-order-card-btn {
   padding: 0.35rem 0.6rem;
   font-size: 0.8rem;

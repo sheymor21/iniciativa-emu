@@ -112,9 +112,12 @@ let allUsers = [];
 let currentUser = null;
 let userFavorites = new Set();
 let userPlayOrder = [];
+let userPlayedGames = new Set();
 let showOnlyFavorites = false;
+let showOnlyPlayed = false;
 const processingFavorites = new Set();
 const processingPlayOrder = new Set();
+const processingPlayed = new Set();
 let draggedPlayOrderId = null;
 
 function loadCurrentUser() {
@@ -218,16 +221,19 @@ async function loadGames() {
 async function loadUserLists() {
   userFavorites = new Set();
   userPlayOrder = [];
+  userPlayedGames = new Set();
   if (!isLoggedIn()) return;
 
   try {
     const userId = Number(currentUser.id);
-    const [favResult, orderResult] = await Promise.all([
+    const [favResult, orderResult, playedResult] = await Promise.all([
       turso.execute('SELECT game_id FROM favorites WHERE user_id = ?', [userId]),
       turso.execute('SELECT game_id FROM play_orders WHERE user_id = ? ORDER BY sort_order ASC, created_at ASC', [userId]),
+      turso.execute('SELECT game_id FROM played_games WHERE user_id = ?', [userId]),
     ]);
     favResult.rows.forEach(r => userFavorites.add(Number(r.game_id)));
     userPlayOrder = orderResult.rows.map(r => Number(r.game_id));
+    playedResult.rows.forEach(r => userPlayedGames.add(Number(r.game_id)));
   } catch (err) {
     console.error('Error loading user lists:', err);
   }
@@ -283,6 +289,7 @@ function applyFilters() {
     if (reviewsValue === 'without' && game.reviewCount > 0) return false;
 
     if (showOnlyFavorites && !userFavorites.has(game.id)) return false;
+    if (showOnlyPlayed && !userPlayedGames.has(game.id)) return false;
 
     return true;
   });
@@ -339,6 +346,12 @@ function renderGames(games) {
       </button>
     ` : '';
 
+    const playedHtml = isLoggedIn() ? `
+      <button class="btn played-btn ${userPlayedGames.has(game.id) ? 'active' : ''}" onclick="togglePlayed(${game.id})" title="${userPlayedGames.has(game.id) ? 'Jugado' : 'Marcar como jugado'}">
+        Jugado
+      </button>
+    ` : '';
+
     const playOrderCardHtml = (isLoggedIn() && showOnlyFavorites) ? `
       <button class="btn btn-secondary play-order-card-btn" onclick="addToPlayOrder(${game.id})" ${userPlayOrder.includes(game.id) ? 'disabled' : ''} title="Añadir a orden de juego">
         ${userPlayOrder.includes(game.id) ? 'En orden' : 'Jugar después'}
@@ -366,6 +379,7 @@ function renderGames(games) {
         <h2 class="game-title">${escapeHtml(game.name)}</h2>
         <div class="game-header-actions">
           <span class="game-console">${escapeHtml(game.console)}</span>
+          ${playedHtml}
           ${favoriteHtml}
           ${playOrderCardHtml}
         </div>
@@ -706,6 +720,49 @@ function refreshListsUI() {
   if (playOrderModal.style.display === 'flex') renderPlayOrderList();
 }
 
+async function togglePlayed(gameId) {
+  if (!isLoggedIn()) {
+    alert('Inicia sesión para marcar juegos como jugados.');
+    return;
+  }
+  gameId = Number(gameId);
+  if (processingPlayed.has(gameId)) return;
+  processingPlayed.add(gameId);
+
+  const isPlayed = userPlayedGames.has(gameId);
+  try {
+    if (isPlayed) {
+      await turso.execute('DELETE FROM played_games WHERE user_id = ? AND game_id = ?', [currentUser.id, gameId]);
+      userPlayedGames.delete(gameId);
+    } else {
+      await turso.execute('INSERT INTO played_games (user_id, game_id) VALUES (?, ?)', [currentUser.id, gameId]);
+      userPlayedGames.add(gameId);
+    }
+    updatePlayedButton(gameId);
+    refreshListsUI();
+  } catch (err) {
+    if (!isPlayed && isTursoUniqueError(err)) {
+      userPlayedGames.add(gameId);
+      updatePlayedButton(gameId);
+      refreshListsUI();
+    } else {
+      alert('Error al actualizar juegos jugados: ' + err.message);
+    }
+  } finally {
+    processingPlayed.delete(gameId);
+  }
+}
+
+function updatePlayedButton(gameId) {
+  const card = grid.querySelector(`.game-card[data-id="${gameId}"]`);
+  if (!card) return;
+  const btn = card.querySelector('.played-btn');
+  if (!btn) return;
+  const isPlayed = userPlayedGames.has(gameId);
+  btn.classList.toggle('active', isPlayed);
+  btn.title = isPlayed ? 'Jugado' : 'Marcar como jugado';
+}
+
 function updateFavoriteButton(gameId) {
   const card = grid.querySelector(`.game-card[data-id="${gameId}"]`);
   if (!card) return;
@@ -728,6 +785,21 @@ function toggleFavoritesFilter() {
   }
   showOnlyFavorites = !showOnlyFavorites;
   updateFavoritesButtonState();
+  applyFilters();
+}
+
+function updatePlayedButtonState() {
+  playedBtn.classList.toggle('active', showOnlyPlayed);
+  playedBtn.setAttribute('aria-pressed', String(showOnlyPlayed));
+}
+
+function togglePlayedFilter() {
+  if (!isLoggedIn()) {
+    alert('Inicia sesión para ver tus juegos jugados.');
+    return;
+  }
+  showOnlyPlayed = !showOnlyPlayed;
+  updatePlayedButtonState();
   applyFilters();
 }
 
@@ -778,6 +850,9 @@ function renderPlayOrderList() {
         <span>${escapeHtml(game.console)} · ${escapeHtml(game.genre)}</span>
       </div>
       <div class="list-modal-item-actions">
+        <button class="btn ${userPlayedGames.has(game.id) ? 'btn-success' : 'btn-secondary'}" onclick="togglePlayed(${game.id})" title="${userPlayedGames.has(game.id) ? 'Jugado' : 'Marcar como jugado'}">
+          Jugado
+        </button>
         <button class="btn btn-secondary" onclick="movePlayOrder(${game.id}, -1)" ${i === 0 ? 'disabled' : ''}>↑</button>
         <button class="btn btn-secondary" onclick="movePlayOrder(${game.id}, 1)" ${i === orderedGames.length - 1 ? 'disabled' : ''}>↓</button>
         <button class="btn btn-danger" onclick="removeFromPlayOrder(${game.id})">Quitar</button>
@@ -887,8 +962,9 @@ const adminTabPanels = document.querySelectorAll('.admin-tab-panel');
 const adminNewUserBtn = document.getElementById('admin-new-user-btn');
 const adminUsersTableBody = document.querySelector('#admin-users-table tbody');
 
-// Favorites and play order
+// Favorites, played and play order
 const favoritesBtn = document.getElementById('favorites-btn');
+const playedBtn = document.getElementById('played-btn');
 const playOrderBtn = document.getElementById('play-order-btn');
 const playOrderModal = document.getElementById('play-order-modal');
 const closePlayOrderBtn = document.getElementById('close-play-order');
@@ -896,6 +972,7 @@ const closePlayOrderBtn = document.getElementById('close-play-order');
 function renderAuthUI() {
   if (!isLoggedIn()) {
     showOnlyFavorites = false;
+    showOnlyPlayed = false;
   }
 
   if (currentUser) {
@@ -905,15 +982,18 @@ function renderAuthUI() {
     adminBtn.style.display = isAdmin() ? 'inline-block' : 'none';
     accountBtn.style.display = currentUser.role === 'guest' ? 'none' : 'inline-block';
     favoritesBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
+    playedBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
     playOrderBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
   } else {
     authLoggedOut.style.display = 'flex';
     authLoggedIn.style.display = 'none';
     adminBtn.style.display = 'none';
     favoritesBtn.style.display = 'none';
+    playedBtn.style.display = 'none';
     playOrderBtn.style.display = 'none';
   }
   updateFavoritesButtonState();
+  updatePlayedButtonState();
   updateMainVisibility();
 }
 
@@ -1438,6 +1518,7 @@ async function deleteGame(gameId) {
     await turso.execute('DELETE FROM ratings WHERE game_id = ?', [gameId]);
     await turso.execute('DELETE FROM favorites WHERE game_id = ?', [gameId]);
     await turso.execute('DELETE FROM play_orders WHERE game_id = ?', [gameId]);
+    await turso.execute('DELETE FROM played_games WHERE game_id = ?', [gameId]);
     await turso.execute('DELETE FROM games WHERE id = ?', [gameId]);
     await loadGames();
     renderAdminGames();
@@ -1511,6 +1592,7 @@ userForm.addEventListener('submit', saveUser);
 userFormCancel.addEventListener('click', closeUserModal);
 
 favoritesBtn.addEventListener('click', toggleFavoritesFilter);
+playedBtn.addEventListener('click', togglePlayedFilter);
 playOrderBtn.addEventListener('click', openPlayOrderModal);
 closePlayOrderBtn.addEventListener('click', closePlayOrderModal);
 playOrderModal.querySelector('.modal-backdrop').addEventListener('click', closePlayOrderModal);
@@ -1549,6 +1631,7 @@ window.deleteGame = deleteGame;
 window.openEditModal = openEditModal;
 window.openUserModal = openUserModal;
 window.toggleFavorite = toggleFavorite;
+window.togglePlayed = togglePlayed;
 window.addToPlayOrder = addToPlayOrder;
 window.removeFromPlayOrder = removeFromPlayOrder;
 window.movePlayOrder = movePlayOrder;
