@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jueguiños List por los Pibes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Jueguiños List por los Pibes</h1>
+    <p class="subtitle">Lista colaborativa de juegos con rankings y reseñas</p>
+  </header>
+
+  <section class="auth-bar container">
+    <div id="auth-logged-out" class="auth-form" style="display:none;">
+      <input type="text" id="login-username" placeholder="Usuario" aria-label="Usuario" maxlength="50">
+      <input type="password" id="login-password" placeholder="Contraseña" aria-label="Contraseña" maxlength="100">
+      <button id="login-btn" class="btn btn-primary">Entrar</button>
+      <button id="guest-btn" class="btn btn-secondary">Invitado</button>
+    </div>
+    <div id="auth-logged-in" class="auth-info" style="display:none;">
+      <span id="auth-user-name"></span>
+      <button id="account-btn" class="btn btn-secondary">Mi cuenta</button>
+      <button id="logout-btn" class="btn btn-secondary">Salir</button>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="filters">
+      <div class="filter-group">
+        <label for="filter-name">Nombre</label>
+        <input type="text" id="filter-name" placeholder="Buscar juego...">
+      </div>
+      <div class="filter-group">
+        <label for="filter-console">Consola</label>
+        <select id="filter-console">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-rank">Ranking</label>
+        <select id="filter-rank">
+          <option value="">Todos</option>
+          <option value="rated">Con ranking</option>
+          <option value="unrated">Sin ranking</option>
+          <option value="9+">9 o más</option>
+          <option value="7+">7 o más</option>
+          <option value="5+">5 o más</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-reviews">Reseñas</label>
+        <select id="filter-reviews">
+          <option value="">Todas</option>
+          <option value="with">Con reseñas</option>
+          <option value="without">Sin reseñas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="sort-by">Ordenar</label>
+        <select id="sort-by">
+          <option value="name">Nombre</option>
+          <option value="console">Consola</option>
+          <option value="rank-desc">Ranking (mayor)</option>
+          <option value="rank-asc">Ranking (menor)</option>
+          <option value="reviews-desc">Más reseñas</option>
+          <option value="play-order">Orden de juego</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="status-bar">
+      <span id="result-count">Cargando...</span>
+      <div class="status-actions">
+        <button id="favorites-btn" class="btn btn-secondary" style="display:none;">Favoritos</button>
+        <button id="play-order-btn" class="btn btn-secondary" style="display:none;">Orden de juego</button>
+        <button id="admin-btn" class="btn btn-secondary">Admin</button>
+        <button id="refresh-btn" class="btn btn-secondary">Actualizar</button>
+      </div>
+    </section>
+
+    <section id="login-required" class="empty-state" style="display:none;">
+      <p>Inicia sesión o entra como invitado para ver la lista de juegos.</p>
+    </section>
+
+    <section id="games-grid" class="games-grid">
+      <div class="loading">Cargando juegos...</div>
+    </section>
+  </main>
+
+  <div id="admin-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Administración de juegos</h2>
+        <button id="close-admin" class="btn btn-secondary">Cerrar</button>
+      </div>
+
+      <div class="admin-tabs" role="tablist" aria-label="Secciones de administración">
+        <button class="admin-tab active" data-tab="add" role="tab" aria-selected="true">Agregar juego</button>
+        <button class="admin-tab" data-tab="users" role="tab" aria-selected="false">Usuarios</button>
+        <button class="admin-tab" data-tab="list" role="tab" aria-selected="false">Listado</button>
+      </div>
+
+      <section class="admin-tab-panel active" data-panel="add">
+        <form id="admin-game-form" class="admin-form">
+          <input type="hidden" id="admin-game-id">
+          <div class="filter-group">
+            <label for="admin-game-name">Nombre</label>
+            <input type="text" id="admin-game-name" required maxlength="200">
+          </div>
+          <div class="filter-group">
+            <label for="admin-game-console">Consola</label>
+            <input type="text" id="admin-game-console" required maxlength="50" list="admin-consoles-list">
+            <datalist id="admin-consoles-list"></datalist>
+          </div>
+          <div class="filter-group">
+            <label for="admin-game-genre">Género</label>
+            <input type="text" id="admin-game-genre" required maxlength="100">
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-primary" id="admin-submit-btn">Guardar</button>
+            <button type="button" class="btn btn-secondary" id="admin-cancel-btn">Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-tab-panel" data-panel="users" id="admin-users-section" style="display:none;">
+        <div class="admin-toolbar">
+          <button id="admin-new-user-btn" class="btn btn-primary">Nuevo usuario</button>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table" id="admin-users-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-tab-panel" data-panel="list" style="display:none;">
+        <div class="admin-toolbar">
+          <input type="text" id="admin-search" placeholder="Buscar en admin...">
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table" id="admin-games-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Consola</th>
+                <th>Género</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="edit-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Editar juego</h2>
+        <button id="close-edit" class="btn btn-secondary">Cerrar</button>
+      </div>
+
+      <section class="admin-form-section">
+        <h3>Datos del juego</h3>
+        <form id="edit-game-form" class="admin-form">
+          <input type="hidden" id="edit-game-id">
+          <div class="filter-group">
+            <label for="edit-game-name">Nombre</label>
+            <input type="text" id="edit-game-name" required maxlength="200">
+          </div>
+          <div class="filter-group">
+            <label for="edit-game-console">Consola</label>
+            <input type="text" id="edit-game-console" required maxlength="50" list="edit-consoles-list">
+            <datalist id="edit-consoles-list"></datalist>
+          </div>
+          <div class="filter-group">
+            <label for="edit-game-genre">Género</label>
+            <input type="text" id="edit-game-genre" required maxlength="100">
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-primary" id="edit-save-btn">Guardar cambios</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-list-section">
+        <h3>Votos</h3>
+        <div id="edit-ratings-list" class="edit-list"></div>
+      </section>
+
+      <section class="admin-list-section">
+        <h3>Reseñas</h3>
+        <div id="edit-reviews-list" class="edit-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="account-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Mi cuenta</h2>
+        <button id="close-account" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <form id="account-form" class="admin-form">
+        <div class="filter-group">
+          <label for="account-display-name">Nombre visible</label>
+          <input type="text" id="account-display-name" required maxlength="100">
+        </div>
+        <div class="filter-group">
+          <label for="account-new-password">Nueva contraseña (dejar en blanco para no cambiar)</label>
+          <input type="password" id="account-new-password" minlength="4" maxlength="100">
+        </div>
+        <div class="filter-group">
+          <label for="account-confirm-password">Confirmar nueva contraseña</label>
+          <input type="password" id="account-confirm-password" minlength="4" maxlength="100">
+        </div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="user-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="user-modal-title">Usuario</h2>
+        <button id="close-user" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <form id="user-form" class="admin-form">
+        <input type="hidden" id="user-form-id">
+        <div class="filter-group">
+          <label for="user-form-username">Usuario</label>
+          <input type="text" id="user-form-username" required maxlength="50">
+        </div>
+        <div class="filter-group">
+          <label for="user-form-display-name">Nombre visible</label>
+          <input type="text" id="user-form-display-name" required maxlength="100">
+        </div>
+        <div class="filter-group">
+          <label for="user-form-role">Rol</label>
+          <select id="user-form-role">
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+            <option value="guest">Invitado</option>
+          </select>
+        </div>
+        <div class="filter-group" id="user-form-password-group">
+          <label for="user-form-password">Contraseña</label>
+          <input type="password" id="user-form-password" required minlength="4" maxlength="100">
+        </div>
+        <div class="admin-form-actions">
+          <button type="submit" class="btn btn-primary" id="user-form-submit">Guardar</button>
+          <button type="button" class="btn btn-secondary" id="user-form-cancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="play-order-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Orden de juego</h2>
+        <button id="close-play-order" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <div id="play-order-list" class="list-modal-body">
+        <div class="empty-state">Cargando orden de juego...</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Hecho para los pibes.</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
