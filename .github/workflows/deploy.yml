@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inject Turso config
+        run: |
+          cp js/config.example.js js/config.js
+          sed -i "s|YOUR_DATABASE_URL.turso.io|${TURSO_DATABASE_URL#https://}|g" js/config.js
+          sed -i "s|YOUR_TURSO_AUTH_TOKEN|$TURSO_AUTH_TOKEN|g" js/config.js
+          sed -i "s|YOUR_ADMIN_PIN|$ADMIN_PIN|g" js/config.js
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          ADMIN_PIN: ${{ secrets.ADMIN_PIN }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
