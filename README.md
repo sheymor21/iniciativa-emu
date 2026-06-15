@@ -1,8 +1,8 @@
 # Jueguiños List por los Pibes
 
-Sitio estático para [GitHub Pages](https://pages.github.com/) que muestra la lista de juegos de **Jueguiños list por los pibes.txt**, con filtros por nombre, consola, ranking y reseñas.
+Sitio estático para [GitHub Pages](https://pages.github.com/) que muestra la lista de juegos de **Jueguiños list por los pibes.txt**, con filtros por nombre, consola, ranking, reseñas y más.
 
-Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positivos/negativos**, usando [Turso](https://turso.tech/) como base de datos.
+Incluye un sistema de **ranking numérico** (1-10), **reseñas con votos positivos/negativos**, **favoritos**, **lista de juegos pendientes** y **marcar como jugado**, usando [Turso](https://turso.tech/) como base de datos.
 
 ## Características
 
@@ -14,13 +14,14 @@ Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positi
 - Ordenamiento por nombre, consola, ranking o cantidad de reseñas.
 - Ranking numérico de 1 a 10 por juego.
 - Reseñas con autor, contenido y votos positivos/negativos.
+- Favoritos, lista de próximos juegos y registro de juegos jugados.
 - Panel de administración con CRUD completo de juegos (crear, editar, eliminar).
-- Sistema de login con roles: administrador, usuario e invitado.
-- Solo los usuarios registrados pueden votar y escribir reseñas.
-- Los invitados pueden ver juegos y reseñas, pero no votar ni reseñar.
-- El administrador puede crear y gestionar usuarios.
-- Cada usuario puede cambiar su nombre visible y contraseña.
-- Sitio 100% estático para GitHub Pages.
+- Gestión de usuarios: el administrador puede crear, editar y eliminar usuarios.
+- Sistema de login con roles: **administrador**, **usuario** e **invitado**.
+  - Los **invitados** pueden ver juegos y reseñas, pero no votar, escribir reseñas, ni usar favoritos/lista de juegos.
+  - Los **usuarios registrados** y los **administradores** pueden votar, escribir reseñas, guardar favoritos, administrar su lista de juegos y marcar juegos como jugados.
+- Cada usuario puede cambiar su nombre visible y contraseña desde **Mi cuenta**.
+- Sitio 100% estático para GitHub Pages; la lógica está dividida en módulos ES sin bundler.
 
 ## Requisitos
 
@@ -33,17 +34,34 @@ Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positi
 .
 ├── index.html              # Página principal
 ├── css/style.css           # Estilos
-├── js/app.js               # Lógica de la aplicación
-├── js/config.js            # Configuración de Turso (ver abajo)
+├── js/
+│   ├── app.js              # Inicialización de la aplicación
+│   ├── auth.js             # Autenticación y roles de usuario
+│   ├── games.js            # Carga y filtros de juegos
+│   ├── lists.js            # Favoritos, próximos juegos y jugados
+│   ├── reviews.js          # Reseñas y votos
+│   ├── admin.js            # Panel de administración
+│   ├── state.js            # Estado compartido
+│   ├── templates.js        # Plantillas HTML
+│   ├── elements.js         # Referencias a elementos del DOM
+│   ├── utils.js            # Utilidades
+│   ├── tab-counts.js       # Contadores de pestañas
+│   ├── turso-client.js     # Cliente de Turso para el navegador
+│   ├── config.js           # Configuración de Turso (ver abajo)
+│   └── config.example.js   # Ejemplo de configuración
 ├── data/games.json         # Lista de juegos parseada
 ├── scripts/
 │   ├── parse-games.js      # Parsea el .txt a JSON
-│   └── setup-turso.js      # Crea tablas y carga datos en Turso
-└── .github/workflows/
-    └── deploy.yml          # Despliegue automático en GitHub Pages
+│   ├── setup-turso.js      # Crea tablas, migra y carga datos en Turso
+│   └── clean-db.js         # Limpia tablas de juegos (conserva usuarios)
+├── .github/workflows/
+│   └── deploy.yml          # Despliegue automático en GitHub Pages
+└── eslint.config.mjs       # Configuración de ESLint
 ```
 
 ## Configuración local
+
+Los **scripts** usan variables de entorno desde `.env`; el **navegador** usa `js/config.js`. Ambos archivos están en `.gitignore` y contienen la misma URL, token y PIN de administrador.
 
 1. Instala dependencias:
 
@@ -57,9 +75,18 @@ Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positi
    cp .env.example .env
    ```
 
-3. Completa tus credenciales de Turso en `.env`.
+3. Completa tus credenciales de Turso en `.env`:
 
-   El script `setup-db` carga automáticamente las variables del archivo `.env` gracias a `dotenv`.
+   ```env
+   TURSO_DATABASE_URL=https://emu-TU-ORG.turso.io
+   TURSO_AUTH_TOKEN=tu-token-aqui
+   ADMIN_PIN=1234
+   ADMIN_USERNAME=admin
+   ADMIN_DISPLAY_NAME=Administrador
+   ```
+
+   - `TURSO_DATABASE_URL`: puedes usar la URL tal como la devuelve `turso db show emu --url` (`libsql://...` o `https://...`).
+   - `ADMIN_PIN`, `ADMIN_USERNAME` y `ADMIN_DISPLAY_NAME` se usan para crear el usuario administrador por defecto al ejecutar `npm run setup-db`.
 
 ## Crear la base de datos en Turso
 
@@ -81,18 +108,7 @@ Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positi
    turso db show emu --url
    ```
 
-4. Guarda esos valores en tu `.env`:
-
-   ```env
-   TURSO_DATABASE_URL=libsql://emu-TU-ORG.turso.io
-   TURSO_AUTH_TOKEN=tu-token-aqui
-   ADMIN_PIN=1234
-   ADMIN_USERNAME=admin
-   ADMIN_DISPLAY_NAME=Administrador
-   ```
-
-   Puedes usar la URL tal como la devuelve `turso db show emu --url` (`libsql://...` o `https://...`).
-   `ADMIN_PIN` se usa como contraseña del usuario administrador por defecto que crea `npm run setup-db`.
+4. Guarda esos valores en tu `.env` (ver sección anterior).
 
 ## Cargar los juegos en Turso
 
@@ -100,11 +116,20 @@ Incluye un sistema de **ranking numérico** (1-10) y **reseñas con votos positi
 npm run setup-db
 ```
 
-Esto crea las tablas (`games`, `ratings`, `reviews`, `review_votes`) y carga los 469 juegos parseados desde `data/games.json`.
+Esto crea las tablas (`games`, `ratings`, `reviews`, `review_votes`, `users`, `favorites`, `play_orders`, `played_games`), aplica migraciones leves si es necesario (por ejemplo, agrega `author` a `ratings` y `voter` a `review_votes`) y carga los juegos parseados desde `data/games.json`.
+
+`setup-db` omite la carga de juegos si la tabla `games` ya tiene filas. Para volver a cargar los datos desde cero:
+
+```bash
+npm run clean-db
+npm run setup-db
+```
+
+`clean-db` borra las filas relacionadas con juegos, rankings, reseñas, votos, favoritos y listas de juegos, pero **conserva** la tabla `users` y el historial de `played_games`.
 
 ## Desarrollo local
 
-1. Copia el archivo de configuración de ejemplo:
+1. Copia el archivo de configuración del navegador:
 
    ```bash
    cp js/config.example.js js/config.js
@@ -113,16 +138,30 @@ Esto crea las tablas (`games`, `ratings`, `reviews`, `review_votes`) y carga los
 2. Completa tus credenciales en `js/config.js`:
 
    ```js
-   url: 'libsql://emu-TU-ORG.turso.io',
-   token: 'tu-token-aqui',
-   adminPin: '1234',
+   const TURSO_CONFIG = {
+     url: 'libsql://emu-TU-ORG.turso.io',
+     token: 'tu-token-aqui',
+     adminPin: '1234',
+   };
    ```
 
    `js/config.js` está en `.gitignore` para evitar subir secretos.
 
-3. Abre `index.html` en tu navegador (puedes usar cualquier servidor estático, por ejemplo `npx serve .`).
+3. Sirve la carpeta de forma estática por HTTP. Los módulos ES no funcionan al abrir `index.html` directamente con `file://`.
 
-Usa **Entrar** con el usuario administrador creado por `setup-db` (por defecto `admin` y la contraseña definida en `ADMIN_PIN`). El botón **Admin** solo es visible para administradores.
+   ```bash
+   npx serve .
+   # o
+   python3 -m http.server 8080
+   ```
+
+4. Abre la URL del servidor en tu navegador e inicia sesión con el usuario administrador creado por `setup-db` (por defecto `admin` y el PIN definido en `ADMIN_PIN`). El botón **Admin** solo es visible para administradores.
+
+Puedes verificar el estilo del código con:
+
+```bash
+npx eslint js/
+```
 
 ⚠️ **Importante de seguridad**: el token de Turso queda expuesto en el código del navegador. Cualquiera que lo tenga puede leer y modificar tu base de datos. Para un proyecto personal/pequeño esto suele ser aceptable, pero no uses este patrón con datos sensibles. Si el token se filtra, rótalo inmediatamente con `turso db tokens rotate emu`.
 
@@ -137,7 +176,7 @@ Usa **Entrar** con el usuario administrador creado por `setup-db` (por defecto `
 
 3. Ve a **Settings > Pages** y selecciona **GitHub Actions** como fuente de despliegue.
 
-4. El workflow `.github/workflows/deploy.yml` se ejecutará automáticamente en cada push a `main`, inyectando las credenciales de Turso en `js/config.js` antes de subir la página.
+4. El workflow `.github/workflows/deploy.yml` se ejecutará automáticamente en cada push a `main` o `master`, y también se puede disparar manualmente con `workflow_dispatch`. El workflow copia `js/config.example.js` a `js/config.js` e inyecta las credenciales de Turso antes de subir la página.
 
 ## Actualizar la lista de juegos
 
@@ -147,6 +186,8 @@ Si editas `Jueguiños list por los pibes.txt`, regenera el JSON y vuelve a carga
 npm run parse
 npm run setup-db
 ```
+
+Si `setup-db` omite la carga porque `games` ya tiene datos, usa `npm run clean-db` antes de `npm run setup-db`.
 
 ## Licencia
 
