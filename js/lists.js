@@ -27,6 +27,7 @@ import { isUniqueConstraintError } from './utils.js';
 import { playOrderItem } from './templates.js';
 import { applyFilters } from './games.js';
 import { setShowOnlyFavorites, setShowOnlyPlayed } from './state.js';
+import { updateTabCounts } from './tab-counts.js';
 
 /**
  * Load favorites, play order, and played games for the current user.
@@ -36,7 +37,10 @@ export async function loadUserLists() {
   setUserPlayOrder([]);
   userPlayedGames.clear();
 
-  if (!isLoggedIn() || !currentUser) return;
+  if (!isLoggedIn() || !currentUser) {
+    updateTabCounts();
+    return;
+  }
 
   try {
     const userId = Number(currentUser.id);
@@ -51,6 +55,8 @@ export async function loadUserLists() {
     playedResult.rows.forEach(r => userPlayedGames.add(Number(r.game_id)));
   } catch (err) {
     console.error('Error loading user lists:', err);
+  } finally {
+    updateTabCounts();
   }
 }
 
@@ -392,6 +398,7 @@ export async function setPlayOrderRank(gameId, newRank) {
  * Refresh both the game grid and the play order modal.
  */
 export function refreshListsUI() {
+  updateTabCounts();
   applyFilters();
   if (playOrderModal?.style.display === 'flex') {
     renderPlayOrderList();

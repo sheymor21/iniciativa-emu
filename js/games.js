@@ -27,6 +27,7 @@ import {
 } from './elements.js';
 import { escapeHtml } from './utils.js';
 import { gameCard } from './templates.js';
+import { updateTabCounts } from './tab-counts.js';
 
 /**
  * @typedef {import('./state.js').Game} Game
@@ -75,6 +76,7 @@ export async function loadGames() {
     setConsoles([...new Set(games.map(g => g.console))].sort());
     populateConsoleFilter();
     applyFilters();
+    updateTabCounts();
   } catch (err) {
     grid.innerHTML = `<div class="error">
       <strong>Error cargando juegos:</strong><br>

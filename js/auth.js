@@ -30,8 +30,9 @@ import {
   setShowOnlyPlayed,
 } from './state.js';
 import { escapeHtml, hashPassword, roleLabel } from './utils.js';
-import { updateFavoritesButtonState, updatePlayedButtonState } from './lists.js';
+import { loadUserLists, updateFavoritesButtonState, updatePlayedButtonState } from './lists.js';
 import { applyFilters, loadGames } from './games.js';
+import { updateTabCounts } from './tab-counts.js';
 
 /**
  * Render the auth bar and visibility based on current user.
@@ -64,6 +65,7 @@ export function renderAuthUI() {
   updateFavoritesButtonState();
   updatePlayedButtonState();
   updateMainVisibility();
+  updateTabCounts();
 }
 
 /**
@@ -124,6 +126,8 @@ export async function login() {
     loginPassword.value = '';
     renderAuthUI();
     await loadGames();
+    await loadUserLists();
+    applyFilters();
   } catch (err) {
     alert('Error al iniciar sesión: ' + (err instanceof Error ? err.message : String(err)));
   }
