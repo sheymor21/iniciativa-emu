@@ -9,11 +9,15 @@ import {
   adminForm,
   adminModal,
   adminSearch,
+  adminSuggestionFilter,
   adminTabs,
   closeAccountBtn,
   closeAdminBtn,
   closeEditBtn,
+  closeMySuggestionsBtn,
   closePlayOrderBtn,
+  closeSuggestionBtn,
+  closeSuggestionDetailBtn,
   closeUserBtn,
   editForm,
   editModal,
@@ -27,12 +31,19 @@ import {
   loginPassword,
   loginUsername,
   logoutBtn,
+  mySuggestionsBtn,
+  mySuggestionsModal,
   playOrderBtn,
   playOrderListEl,
   playOrderModal,
   playedBtn,
   refreshBtn,
   sortBy,
+  suggestionBtn,
+  suggestionCommentForm,
+  suggestionForm,
+  suggestionModal,
+  suggestionDetailModal,
   userForm,
   userFormCancel,
 } from './elements.js';
@@ -83,6 +94,18 @@ import {
   saveUser,
   switchAdminTab,
 } from './admin.js';
+import {
+  closeMySuggestionsModal,
+  closeSuggestionDetailModal,
+  closeSuggestionModal,
+  openMySuggestionsModal,
+  openSuggestionDetailModal,
+  openSuggestionModal,
+  renderAdminSuggestions,
+  submitSuggestion,
+  submitSuggestionComment,
+  updateSuggestionStatus,
+} from './suggestions.js';
 
 // Expose functions used by inline onclick handlers in templates.
 Object.assign(window, {
@@ -100,6 +123,15 @@ Object.assign(window, {
   removeFromPlayOrder,
   movePlayOrder,
   setPlayOrderRank,
+  openSuggestionModal,
+  closeSuggestionModal,
+  openSuggestionDetailModal,
+  closeSuggestionDetailModal,
+  submitSuggestion,
+  submitSuggestionComment,
+  updateSuggestionStatus,
+  openMySuggestionsModal,
+  closeMySuggestionsModal,
 });
 
 // Filter inputs.
@@ -139,6 +171,7 @@ adminModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeAdm
 adminForm?.addEventListener('submit', saveAdminGame);
 adminCancelBtn?.addEventListener('click', resetAdminForm);
 adminSearch?.addEventListener('input', renderAdminGames);
+adminSuggestionFilter?.addEventListener('change', renderAdminSuggestions);
 adminTabs.forEach(tab => {
   tab.addEventListener('click', () => switchAdminTab(tab.dataset.tab || ''));
 });
@@ -152,6 +185,20 @@ editForm?.addEventListener('submit', saveEditGame);
 closeUserBtn?.addEventListener('click', closeUserModal);
 userForm?.addEventListener('submit', saveUser);
 userFormCancel?.addEventListener('click', closeUserModal);
+
+// Suggestions.
+suggestionBtn?.addEventListener('click', openSuggestionModal);
+closeSuggestionBtn?.addEventListener('click', closeSuggestionModal);
+suggestionModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeSuggestionModal);
+suggestionForm?.addEventListener('submit', submitSuggestion);
+closeSuggestionDetailBtn?.addEventListener('click', closeSuggestionDetailModal);
+suggestionDetailModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeSuggestionDetailModal);
+suggestionCommentForm?.addEventListener('submit', submitSuggestionComment);
+
+// My suggestions.
+mySuggestionsBtn?.addEventListener('click', openMySuggestionsModal);
+closeMySuggestionsBtn?.addEventListener('click', closeMySuggestionsModal);
+mySuggestionsModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeMySuggestionsModal);
 
 // Play order drag and drop.
 playOrderListEl?.addEventListener('dragover', e => {

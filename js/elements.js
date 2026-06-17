@@ -25,6 +25,12 @@ export const sortBy = document.getElementById('sort-by');
 export const refreshBtn = document.getElementById('refresh-btn');
 
 /** @type {HTMLButtonElement|null} */
+export const suggestionBtn = document.getElementById('suggestion-btn');
+
+/** @type {HTMLButtonElement|null} */
+export const mySuggestionsBtn = document.getElementById('my-suggestions-btn');
+
+/** @type {HTMLButtonElement|null} */
 export const favoritesBtn = document.getElementById('favorites-btn');
 
 /** @type {HTMLButtonElement|null} */
@@ -209,3 +215,66 @@ export const adminUsersTableBody = document.querySelector('#admin-users-table tb
 
 /** @type {HTMLElement|null} */
 export const loginRequired = document.getElementById('login-required');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionModal = document.getElementById('suggestion-modal');
+
+/** @type {HTMLButtonElement|null} */
+export const closeSuggestionBtn = document.getElementById('close-suggestion');
+
+/** @type {HTMLFormElement|null} */
+export const suggestionForm = document.getElementById('suggestion-form');
+
+/** @type {HTMLSelectElement|null} */
+export const suggestionType = document.getElementById('suggestion-type');
+
+/** @type {HTMLInputElement|null} */
+export const suggestionTitle = document.getElementById('suggestion-title');
+
+/** @type {HTMLTextAreaElement|null} */
+export const suggestionDescription = document.getElementById('suggestion-description');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionDetailModal = document.getElementById('suggestion-detail-modal');
+
+/** @type {HTMLButtonElement|null} */
+export const closeSuggestionDetailBtn = document.getElementById('close-suggestion-detail');
+
+/** @type {HTMLHeadingElement|null} */
+export const suggestionDetailTitle = document.getElementById('suggestion-detail-title');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionDetailMeta = document.getElementById('suggestion-detail-meta');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionDetailBody = document.getElementById('suggestion-detail-body');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionDetailActions = document.getElementById('suggestion-detail-actions');
+
+/** @type {HTMLDivElement|null} */
+export const suggestionCommentsList = document.getElementById('suggestion-comments-list');
+
+/** @type {HTMLFormElement|null} */
+export const suggestionCommentForm = document.getElementById('suggestion-comment-form');
+
+/** @type {HTMLInputElement|null} */
+export const suggestionCommentId = document.getElementById('suggestion-comment-id');
+
+/** @type {HTMLTextAreaElement|null} */
+export const suggestionCommentContent = document.getElementById('suggestion-comment-content');
+
+/** @type {HTMLSelectElement|null} */
+export const adminSuggestionFilter = document.getElementById('admin-suggestion-filter');
+
+/** @type {HTMLTableSectionElement|null} */
+export const adminSuggestionsTableBody = document.querySelector('#admin-suggestions-table tbody');
+
+/** @type {HTMLDivElement|null} */
+export const mySuggestionsModal = document.getElementById('my-suggestions-modal');
+
+/** @type {HTMLButtonElement|null} */
+export const closeMySuggestionsBtn = document.getElementById('close-my-suggestions');
+
+/** @type {HTMLTableSectionElement|null} */
+export const mySuggestionsTableBody = document.querySelector('#my-suggestions-table tbody');

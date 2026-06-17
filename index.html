@@ -76,6 +76,8 @@
         <button id="favorites-btn" class="btn btn-secondary" style="display:none;">Favoritos</button>
         <button id="played-btn" class="btn btn-secondary" style="display:none;">Jugados</button>
         <button id="play-order-btn" class="btn btn-secondary" style="display:none;">Orden de juego</button>
+        <button id="suggestion-btn" class="btn btn-secondary" style="display:none;">Sugerencias</button>
+        <button id="my-suggestions-btn" class="btn btn-secondary" style="display:none;">Mis sugerencias</button>
         <button id="admin-btn" class="btn btn-secondary">Admin</button>
         <button id="refresh-btn" class="btn btn-secondary">Actualizar</button>
       </div>
@@ -94,13 +96,14 @@
     <div class="modal-backdrop"></div>
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Administración de juegos</h2>
+        <h2>Administración</h2>
         <button id="close-admin" class="btn btn-secondary">Cerrar</button>
       </div>
 
       <div class="admin-tabs" role="tablist" aria-label="Secciones de administración">
         <button class="admin-tab active" data-tab="add" role="tab" aria-selected="true">Agregar juego</button>
         <button class="admin-tab" data-tab="users" role="tab" aria-selected="false">Usuarios</button>
+        <button class="admin-tab" data-tab="suggestions" role="tab" aria-selected="false">Sugerencias</button>
         <button class="admin-tab" data-tab="list" role="tab" aria-selected="false">Listado</button>
       </div>
 
@@ -139,6 +142,33 @@
                 <th>Usuario</th>
                 <th>Nombre</th>
                 <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-tab-panel" data-panel="suggestions" style="display:none;">
+        <div class="admin-toolbar">
+          <select id="admin-suggestion-filter">
+            <option value="">Todas</option>
+            <option value="pending">Pendientes</option>
+            <option value="completed">Completadas</option>
+            <option value="denied">Denegadas</option>
+          </select>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table" id="admin-suggestions-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Estado</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -285,6 +315,84 @@
       </div>
       <div id="play-order-list" class="list-modal-body">
         <div class="empty-state">Cargando orden de juego...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="suggestion-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Enviar sugerencia</h2>
+        <button id="close-suggestion" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <form id="suggestion-form" class="admin-form suggestion-form">
+        <div class="filter-group">
+          <label for="suggestion-type">Tipo</label>
+          <select id="suggestion-type" required>
+            <option value="game">Agregar juego</option>
+            <option value="page">Cambio en la página</option>
+          </select>
+        </div>
+        <div class="filter-group suggestion-wide">
+          <label for="suggestion-title">Título</label>
+          <input type="text" id="suggestion-title" required maxlength="200" placeholder="Resumen breve">
+        </div>
+        <div class="filter-group suggestion-wide">
+          <label for="suggestion-description">Descripción</label>
+          <textarea id="suggestion-description" required maxlength="2000" placeholder="Describe tu sugerencia..."></textarea>
+        </div>
+        <div class="admin-form-actions suggestion-wide">
+          <button type="submit" class="btn btn-primary">Enviar sugerencia</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="suggestion-detail-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="suggestion-detail-title">Sugerencia</h2>
+        <button id="close-suggestion-detail" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <div class="suggestion-detail">
+        <div class="suggestion-meta" id="suggestion-detail-meta"></div>
+        <div class="suggestion-body" id="suggestion-detail-body"></div>
+        <div class="suggestion-actions" id="suggestion-detail-actions"></div>
+      </div>
+      <div class="suggestion-comments-section">
+        <h3>Comentarios</h3>
+        <div id="suggestion-comments-list" class="suggestion-comments-list"></div>
+        <form id="suggestion-comment-form" class="suggestion-comment-form">
+          <input type="hidden" id="suggestion-comment-id">
+          <textarea id="suggestion-comment-content" placeholder="Escribe un comentario..." maxlength="1000" required></textarea>
+          <button type="submit" class="btn btn-primary">Comentar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="my-suggestions-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Mis sugerencias</h2>
+        <button id="close-my-suggestions" class="btn btn-secondary">Cerrar</button>
+      </div>
+      <div class="admin-table-wrapper">
+        <table class="admin-table" id="my-suggestions-table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Título</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
   </div>

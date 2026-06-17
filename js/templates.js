@@ -200,6 +200,68 @@ export function editRatingItem(rating) {
 }
 
 /**
+ * @param {object} suggestion
+ * @param {object} labels
+ * @param {string} labels.typeLabel
+ * @param {string} labels.statusLabel
+ * @param {string} labels.statusClass
+ * @param {string} labels.date
+ * @param {boolean} [labels.showAdminActions]
+ * @returns {string}
+ */
+export function suggestionRow(suggestion, labels) {
+  const adminActions = labels.showAdminActions ? `
+    <button class="btn btn-success suggestion-complete-btn" data-id="${suggestion.id}">Completar</button>
+    <button class="btn btn-danger suggestion-deny-btn" data-id="${suggestion.id}">Denegar</button>
+  ` : '';
+  return `
+    <td>${suggestion.id}</td>
+    <td>${escapeHtml(labels.typeLabel)}</td>
+    <td>${escapeHtml(suggestion.title)}</td>
+    <td>${escapeHtml(suggestion.author)}</td>
+    <td><span class="badge ${labels.statusClass}">${escapeHtml(labels.statusLabel)}</span></td>
+    <td>${escapeHtml(labels.date)}</td>
+    <td>
+      <button class="btn btn-primary suggestion-view-btn" data-id="${suggestion.id}">Ver</button>
+      ${adminActions}
+    </td>
+  `;
+}
+
+/**
+ * @param {object} suggestion
+ * @param {object} labels
+ * @param {string} labels.typeLabel
+ * @param {string} labels.statusLabel
+ * @param {string} labels.statusClass
+ * @param {string} labels.date
+ * @returns {string}
+ */
+export function userSuggestionRow(suggestion, labels) {
+  return `
+    <td>${escapeHtml(labels.typeLabel)}</td>
+    <td>${escapeHtml(suggestion.title)}</td>
+    <td><span class="badge ${labels.statusClass}">${escapeHtml(labels.statusLabel)}</span></td>
+    <td>${escapeHtml(labels.date)}</td>
+    <td>
+      <button class="btn btn-primary suggestion-view-btn" data-id="${suggestion.id}">Ver</button>
+    </td>
+  `;
+}
+
+/**
+ * @param {object} comment
+ * @param {string} date
+ * @returns {string}
+ */
+export function suggestionCommentItem(comment, date) {
+  return `
+    <div class="suggestion-comment-author">${escapeHtml(comment.author)} <span>${escapeHtml(date)}</span></div>
+    <p class="suggestion-comment-content">${escapeHtml(comment.content)}</p>
+  `;
+}
+
+/**
  * @param {object} review
  * @returns {string}
  */

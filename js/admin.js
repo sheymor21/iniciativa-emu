@@ -48,6 +48,7 @@ import { adminGameRow, adminUserRow, editRatingItem, editReviewItem } from './te
 import { hashPassword } from './utils.js';
 import { loadGames, applyFilters } from './games.js';
 import { saveCurrentUser, renderAuthUI } from './auth.js';
+import { loadSuggestions, renderAdminSuggestions } from './suggestions.js';
 
 /**
  * Switch visible admin tab.
@@ -105,6 +106,9 @@ export function openAdminModal() {
   renderAdminGames();
   loadUsers().then(renderAdminUsers).catch(err => {
     console.error('Error loading users:', err);
+  });
+  loadSuggestions().then(renderAdminSuggestions).catch(err => {
+    console.error('Error loading suggestions:', err);
   });
 }
 

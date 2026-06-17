@@ -15,8 +15,10 @@ import {
   loginPassword,
   loginRequired,
   loginUsername,
+  mySuggestionsBtn,
   playOrderBtn,
   playedBtn,
+  suggestionBtn,
 } from './elements.js';
 import {
   clearCurrentUser,
@@ -52,6 +54,8 @@ export function renderAuthUI() {
     if (favoritesBtn) favoritesBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
     if (playedBtn) playedBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
     if (playOrderBtn) playOrderBtn.style.display = isLoggedIn() ? 'inline-block' : 'none';
+    if (suggestionBtn) suggestionBtn.style.display = 'inline-block';
+    if (mySuggestionsBtn) mySuggestionsBtn.style.display = 'inline-block';
   } else {
     if (authLoggedOut) authLoggedOut.style.display = 'flex';
     if (authLoggedIn) authLoggedIn.style.display = 'none';
@@ -60,6 +64,8 @@ export function renderAuthUI() {
     if (favoritesBtn) favoritesBtn.style.display = 'none';
     if (playedBtn) playedBtn.style.display = 'none';
     if (playOrderBtn) playOrderBtn.style.display = 'none';
+    if (suggestionBtn) suggestionBtn.style.display = 'none';
+    if (mySuggestionsBtn) mySuggestionsBtn.style.display = 'none';
   }
 
   updateFavoritesButtonState();
