@@ -134,6 +134,8 @@ export class TursoClient {
       if (cell === null || cell === undefined) return null;
       if (typeof cell !== 'object') return cell;
       if (cell.type === 'null') return null;
+      if (cell.type === 'integer') return Number(cell.value);
+      if (cell.type === 'float') return Number(cell.value);
       return cell.value;
     };
 
