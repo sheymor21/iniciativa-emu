@@ -7,7 +7,7 @@ Static GitHub Pages site for a game list, backed by Turso. Vanilla HTML/CSS/JS, 
 - `npm install` — install script dependencies.
 - `npm run parse` — regenerate `data/games.json` from `Jueguiños list por los pibes.txt`.
 - `npm run setup-db` — create Turso schema, run migrations, seed `games`, create default admin if `.env` has `ADMIN_PIN`.
-- `npm run clean-db` — delete game-related rows but **preserves `users`**. Run `setup-db` after to re-seed.
+- `npm run clean-db` — delete game-related rows but **preserves `users` and `played_games`**. Run `npm run setup-db` after to re-seed.
 - `npx eslint js/` — lint the JavaScript modules.
 
 If you edit the `.txt` source, run `parse` then `setup-db` in that order.
@@ -29,7 +29,7 @@ Scripts use `.env`; the browser uses `js/config.js`. Both are gitignored and hol
 
 - `setup-db` creates a `users` table and a default admin from `.env` (`ADMIN_USERNAME`, `ADMIN_PIN`, `ADMIN_DISPLAY_NAME`).
 - Roles: `admin`, `user`, `guest`.
-- Guests can view games and reviews but cannot vote, write reviews, or use favorites/play order.
+- Guests can view games and reviews, and submit suggestions, but cannot vote, write reviews, or use favorites/play order.
 - Users and admins can vote, write reviews, save favorites, manage play order, and mark games as played.
 - Only admins can create/edit/delete users and manage games.
 - Users can change their display name and password via **Mi cuenta**.
@@ -44,7 +44,7 @@ Scripts use `.env`; the browser uses `js/config.js`. Both are gitignored and hol
   DELETE FROM sqlite_sequence WHERE name='games';
   ```
 - It also skips creating the default admin if any `users` row exists.
-- Schema creates `games`, `ratings`, `reviews`, `review_votes`, `users`, `favorites`, `play_orders`, and `played_games` plus indexes.
+- Schema creates `games`, `ratings`, `reviews`, `review_votes`, `users`, `favorites`, `play_orders`, `played_games`, `suggestions`, and `suggestion_comments` plus indexes.
 - `clean-db` clears `review_votes`, `reviews`, `ratings`, `favorites`, `play_orders`, and `games` but **not** `users` or `played_games`.
 - `setup-db` runs lightweight migrations: it adds `author` to `ratings` and `voter` to `review_votes` only if those columns are missing.
 
@@ -61,7 +61,7 @@ Scripts use `.env`; the browser uses `js/config.js`. Both are gitignored and hol
 - `.github/workflows/deploy.yml` runs on push to `main` or `master`, and on `workflow_dispatch`.
 - It copies `js/config.example.js` to `js/config.js`, then injects repo secrets via `sed`.
 - Required secrets: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `ADMIN_PIN`.
-- The workflow strips `https://` from `TURSO_DATABASE_URL` before replacing the placeholder `YOUR_DATABASE_URL.turso.io`. The example file expects `libsql://YOUR_DATABASE_URL.turso.io`, but `https://...` works too.
+- Set `TURSO_DATABASE_URL` to the `https://...` URL. The workflow strips `https://` before replacing the placeholder `YOUR_DATABASE_URL.turso.io`; a `libsql://...` secret will produce a broken `libsql://libsql://...` URL.
 
 ## Lint notes
 
