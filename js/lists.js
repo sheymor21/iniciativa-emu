@@ -26,6 +26,7 @@ import {
 import { isUniqueConstraintError } from './utils.js';
 import { playOrderItem } from './templates.js';
 import { applyFilters } from './games.js';
+import { setCurrentPage } from './state.js';
 import { setShowOnlyFavorites, setShowOnlyPlayed } from './state.js';
 import { updateTabCounts } from './tab-counts.js';
 
@@ -203,6 +204,7 @@ export function doToggleFavoritesFilter() {
 
   setShowOnlyFavorites(!showOnlyFavorites);
   updateFavoritesButtonState();
+  setCurrentPage(1);
   applyFilters();
 }
 
@@ -225,6 +227,7 @@ export function doTogglePlayedFilter() {
 
   setShowOnlyPlayed(!showOnlyPlayed);
   updatePlayedButtonState();
+  setCurrentPage(1);
   applyFilters();
 }
 

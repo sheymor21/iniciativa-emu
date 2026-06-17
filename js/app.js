@@ -47,8 +47,8 @@ import {
   userForm,
   userFormCancel,
 } from './elements.js';
-import { currentUser, draggedPlayOrderId, loadCurrentUser } from './state.js';
-import { applyFilters, loadGames } from './games.js';
+import { currentUser, draggedPlayOrderId, loadCurrentUser, setCurrentPage } from './state.js';
+import { applyFilters, goToPage, loadGames } from './games.js';
 import {
   closeAccountModal,
   login,
@@ -132,12 +132,19 @@ Object.assign(window, {
   updateSuggestionStatus,
   openMySuggestionsModal,
   closeMySuggestionsModal,
+  goToPage,
 });
 
 // Filter inputs.
-filterName?.addEventListener('input', applyFilters);
+filterName?.addEventListener('input', () => {
+  setCurrentPage(1);
+  applyFilters();
+});
 [filterConsole, filterRank, filterReviews, sortBy].forEach(el => {
-  el?.addEventListener('change', applyFilters);
+  el?.addEventListener('change', () => {
+    setCurrentPage(1);
+    applyFilters();
+  });
 });
 
 refreshBtn?.addEventListener('click', async () => {

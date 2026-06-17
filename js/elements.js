@@ -278,3 +278,6 @@ export const closeMySuggestionsBtn = document.getElementById('close-my-suggestio
 
 /** @type {HTMLTableSectionElement|null} */
 export const mySuggestionsTableBody = document.querySelector('#my-suggestions-table tbody');
+
+/** @type {HTMLDivElement|null} */
+export const paginationContainer = document.getElementById('pagination-container');

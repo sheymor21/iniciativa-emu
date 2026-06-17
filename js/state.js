@@ -55,6 +55,12 @@ export let showOnlyFavorites = false;
 /** @type {boolean} */
 export let showOnlyPlayed = false;
 
+/** @type {number} */
+export let currentPage = 1;
+
+/** @type {number} */
+export const itemsPerPage = 24;
+
 /** @type {Set<number>} */
 export const processingFavorites = new Set();
 
@@ -129,6 +135,14 @@ export function setShowOnlyPlayed(value) {
  */
 export function setDraggedPlayOrderId(id) {
   draggedPlayOrderId = id;
+}
+
+/**
+ * Set the current page.
+ * @param {number} page
+ */
+export function setCurrentPage(page) {
+  currentPage = page;
 }
 
 export function loadCurrentUser() {

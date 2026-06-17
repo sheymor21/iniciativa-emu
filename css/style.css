@@ -905,6 +905,38 @@ input:focus, select:focus, textarea:focus {
   z-index: 102;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.pagination-ellipsis {
+  color: var(--text-muted);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.95rem;
+}
+
+.pagination button {
+  min-width: 2.5rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 @media (max-width: 600px) {
   .games-grid {
     grid-template-columns: 1fr;
@@ -931,5 +963,15 @@ input:focus, select:focus, textarea:focus {
 
   .edit-list-item {
     grid-template-columns: 1fr;
+  }
+
+  .pagination {
+    gap: 0.35rem;
+  }
+
+  .pagination button {
+    min-width: 2rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.85rem;
   }
 }

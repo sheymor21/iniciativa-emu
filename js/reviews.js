@@ -157,6 +157,7 @@ export async function submitRating(gameId) {
   }
 
   try {
+    await turso.execute('DELETE FROM ratings WHERE game_id = ? AND author = ?', [gameId, author]);
     await turso.execute('INSERT INTO ratings (game_id, author, score) VALUES (?, ?, ?)', [gameId, author, score]);
     if (!currentUser && authorInput) authorInput.value = '';
     if (scoreInput) scoreInput.value = '';

@@ -4,12 +4,15 @@ import { turso } from './turso-client.js';
 import {
   allGames,
   consoles,
+  currentPage,
   currentUser,
   isLoggedIn,
   canReview,
   canVote,
+  itemsPerPage,
   setAllGames,
   setConsoles,
+  setCurrentPage,
   showOnlyFavorites,
   showOnlyPlayed,
   userFavorites,
@@ -23,6 +26,7 @@ import {
   filterRank,
   filterReviews,
   grid,
+  paginationContainer,
   sortBy,
 } from './elements.js';
 import { escapeHtml } from './utils.js';
@@ -137,11 +141,23 @@ export function applyFilters() {
 
   filtered.sort((a, b) => sortGames(a, b, sortValue));
 
-  if (countEl) {
-    countEl.textContent = `${filtered.length} juego${filtered.length !== 1 ? 's' : ''}`;
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  const validPage = Math.min(currentPage, totalPages);
+  if (validPage !== currentPage) {
+    setCurrentPage(validPage);
   }
 
-  renderGames(filtered);
+  const start = (validPage - 1) * itemsPerPage;
+  const paginated = filtered.slice(start, start + itemsPerPage);
+
+  if (countEl) {
+    const countText = filtered.length > 0
+      ? `${filtered.length} juego${filtered.length !== 1 ? 's' : ''} (pág. ${validPage} de ${totalPages})`
+      : '0 juegos';
+    countEl.textContent = countText;
+  }
+
+  renderGames(paginated, filtered.length, totalPages);
 }
 
 /**
@@ -180,11 +196,12 @@ function sortGames(a, b, sortValue) {
  * Render the given games into the grid.
  * @param {Game[]} games
  */
-export function renderGames(games) {
+export function renderGames(games, totalCount, totalPages) {
   if (!grid) return;
 
   if (games.length === 0) {
     grid.innerHTML = '<div class="empty-state">No se encontraron juegos con esos filtros.</div>';
+    if (paginationContainer) paginationContainer.innerHTML = '';
     return;
   }
 
@@ -215,6 +232,8 @@ export function renderGames(games) {
 
     grid.appendChild(card);
   }
+
+  renderPagination(totalCount, totalPages);
 }
 
 /**
@@ -222,4 +241,67 @@ export function renderGames(games) {
  */
 export function refreshGamesUI() {
   applyFilters();
+}
+
+/**
+ * Navigate to a specific page and re-render.
+ * @param {number} page
+ */
+export function goToPage(page) {
+  setCurrentPage(page);
+  applyFilters();
+}
+
+/**
+ * Render pagination controls.
+ * @param {number} totalCount
+ * @param {number} totalPages
+ */
+function renderPagination(totalCount, totalPages) {
+  if (!paginationContainer) return;
+  if (totalPages <= 1) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
+
+  const maxVisible = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  const endPage = Math.min(totalPages, startPage + maxVisible - 1);
+  if (endPage - startPage + 1 < maxVisible) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  const pages = [];
+  if (startPage > 1) {
+    pages.push(1);
+    if (startPage > 2) pages.push(null);
+  }
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) pages.push(null);
+    pages.push(totalPages);
+  }
+
+  const prevDisabled = currentPage === 1 ? 'disabled' : '';
+  const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+
+  let html = '<div class="pagination">';
+  html += `<button class="btn btn-secondary" ${prevDisabled} onclick="window.goToPage(${currentPage - 1})">Anterior</button>`;
+  html += '<div class="pagination-pages">';
+  for (const p of pages) {
+    if (p === null) {
+      html += '<span class="pagination-ellipsis">…</span>';
+    } else if (p === currentPage) {
+      html += `<button class="btn btn-primary active" disabled>${p}</button>`;
+    } else {
+      html += `<button class="btn btn-secondary" onclick="window.goToPage(${p})">${p}</button>`;
+    }
+  }
+  html += '</div>';
+  html += `<button class="btn btn-secondary" ${nextDisabled} onclick="window.goToPage(${currentPage + 1})">Siguiente</button>`;
+  html += '</div>';
+
+  paginationContainer.innerHTML = html;
 }
