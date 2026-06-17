@@ -1,10 +1,9 @@
 // @ts-check
 
 import { turso } from './turso-client.js';
-import { canReview, currentUser } from './state.js';
-import { escapeHtml } from './utils.js';
-import { reviewItem } from './templates.js';
-import { loadGames } from './games.js';
+import { allGames, canReview, currentUser } from './state.js';
+import { escapeHtml, pluralize } from './utils.js';
+import { reviewItem, scoreDisplay, votersDisplay } from './templates.js';
 
 /**
  * Toggle the review list visibility for a game.
@@ -125,10 +124,134 @@ export async function submitReview(gameId) {
     if (!currentUser && authorInput) authorInput.value = '';
     if (contentInput) contentInput.value = '';
     await loadReviews(gameId);
-    await loadGames();
+    await updateGameReviewCount(gameId);
   } catch (err) {
     alert('Error al enviar reseña: ' + (err instanceof Error ? err.message : String(err)));
   }
+}
+
+/**
+ * Update the rating display for a single game card in the DOM.
+ * @param {number} gameId
+ */
+async function updateGameCardRating(gameId) {
+  const { rows } = await turso.execute(`
+    SELECT
+      COALESCE(AVG(r.score), 0) AS avg_score,
+      COUNT(DISTINCT r.id) AS rating_count,
+      COALESCE(GROUP_CONCAT(r.author || ': ' || r.score, ' | '), '') AS rating_votes
+    FROM games g
+    LEFT JOIN ratings r ON r.game_id = g.id
+    WHERE g.id = ?
+  `, [gameId]);
+
+  if (rows.length === 0) return;
+
+  const row = rows[0];
+  const avgScore = Math.round(Number(row.avg_score) * 10) / 10;
+  const ratingCount = Number(row.rating_count);
+  const ratingVotes = String(row.rating_votes);
+
+  const game = allGames.find(g => g.id === gameId);
+  if (!game) return;
+
+  game.avgScore = avgScore;
+  game.ratingCount = ratingCount;
+  game.ratingVotes = ratingVotes;
+
+  const card = document.querySelector(`.game-card[data-id="${gameId}"]`);
+  if (!card) return;
+
+  const ratingEl = card.querySelector('.game-rating');
+  if (ratingEl) {
+    ratingEl.innerHTML = `
+      ${scoreDisplay(game)}
+      <span class="rating-count">${ratingCount === 0 ? 'Sin votos' : `${ratingCount} ${pluralize(ratingCount, 'voto')}`}</span>
+    `;
+  }
+
+  const votersEl = card.querySelector('.rating-votes');
+  if (ratingCount === 0) {
+    if (votersEl) votersEl.remove();
+  } else {
+    const votersHtml = votersDisplay(game);
+    if (votersEl) {
+      votersEl.outerHTML = votersHtml;
+    } else {
+      const ratingEl2 = card.querySelector('.game-rating');
+      if (ratingEl2) {
+        ratingEl2.insertAdjacentHTML('afterend', votersHtml);
+      }
+    }
+  }
+}
+
+/**
+ * Update the review count for a single game card in the DOM.
+ * @param {number} gameId
+ */
+async function updateGameReviewCount(gameId) {
+  const { rows } = await turso.execute(`
+    SELECT COUNT(DISTINCT rv.id) AS review_count
+    FROM reviews rv
+    WHERE rv.game_id = ?
+  `, [gameId]);
+
+  if (rows.length === 0) return;
+
+  const reviewCount = Number(rows[0].review_count);
+  const game = allGames.find(g => g.id === gameId);
+  if (!game) return;
+
+  game.reviewCount = reviewCount;
+
+  const card = document.querySelector(`.game-card[data-id="${gameId}"]`);
+  if (!card) return;
+
+  const reviewsToggle = card.querySelector('.reviews-toggle');
+  if (reviewsToggle) {
+    reviewsToggle.textContent = `Reseñas (${reviewCount})`;
+    reviewsToggle.dataset.count = String(reviewCount);
+  }
+}
+
+/**
+ * Update the vote buttons for a single review in the DOM.
+ * @param {number} reviewId
+ */
+async function updateReviewVoteButtons(reviewId) {
+  const voter = currentUser?.username || '';
+  const { rows } = await turso.execute(`
+    SELECT
+      COALESCE(SUM(CASE WHEN v.vote_type = 'positive' THEN 1 ELSE 0 END), 0) AS positives,
+      COALESCE(SUM(CASE WHEN v.vote_type = 'negative' THEN 1 ELSE 0 END), 0) AS negatives,
+      MAX(CASE WHEN v.voter = ? AND v.vote_type = 'positive' THEN 1 ELSE 0 END) AS user_positive,
+      MAX(CASE WHEN v.voter = ? AND v.vote_type = 'negative' THEN 1 ELSE 0 END) AS user_negative
+    FROM review_votes v
+    WHERE v.review_id = ?
+  `, [voter, voter, reviewId]);
+
+  if (rows.length === 0) return;
+
+  const row = rows[0];
+  const positives = Number(row.positives);
+  const negatives = Number(row.negatives);
+  const userPositive = Boolean(row.user_positive);
+  const userNegative = Boolean(row.user_negative);
+
+  const reviewBtn = document.querySelector(`.review button[onclick*="voteReview(${reviewId},"]`);
+  if (!reviewBtn) return;
+
+  const actions = reviewBtn.closest('.review-actions');
+  if (!actions) return;
+
+  const positiveClass = userPositive ? 'btn-success active' : 'btn-success';
+  const negativeClass = userNegative ? 'btn-danger active' : 'btn-danger';
+
+  actions.innerHTML = `
+    <button class="btn ${positiveClass}" onclick="voteReview(${reviewId}, 'positive')">👍 ${positives}</button>
+    <button class="btn ${negativeClass}" onclick="voteReview(${reviewId}, 'negative')">👎 ${negatives}</button>
+  `;
 }
 
 /**
@@ -161,7 +284,7 @@ export async function submitRating(gameId) {
     await turso.execute('INSERT INTO ratings (game_id, author, score) VALUES (?, ?, ?)', [gameId, author, score]);
     if (!currentUser && authorInput) authorInput.value = '';
     if (scoreInput) scoreInput.value = '';
-    await loadGames();
+    await updateGameCardRating(gameId);
   } catch (err) {
     alert('Error al votar: ' + (err instanceof Error ? err.message : String(err)));
   }
@@ -204,14 +327,7 @@ export async function voteReview(reviewId, voteType) {
       );
     }
 
-    const reviewEl = document.querySelector(`.review button[onclick*="voteReview(${reviewId},"]`);
-    if (reviewEl) {
-      const list = reviewEl.closest('.review-list');
-      if (list && list.id.startsWith('reviews-')) {
-        const gameId = parseInt(list.id.replace('reviews-', ''), 10);
-        await loadReviews(gameId);
-      }
-    }
+    await updateReviewVoteButtons(reviewId);
   } catch (err) {
     alert('Error al votar: ' + (err instanceof Error ? err.message : String(err)));
   }
