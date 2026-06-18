@@ -72,7 +72,7 @@ export const adminGameId = document.getElementById('admin-game-id');
 /** @type {HTMLInputElement|null} */
 export const adminGameName = document.getElementById('admin-game-name');
 
-/** @type {HTMLInputElement|null} */
+/** @type {HTMLSelectElement|null} */
 export const adminGameConsole = document.getElementById('admin-game-console');
 
 /** @type {HTMLInputElement|null} */
@@ -80,9 +80,6 @@ export const adminGameGenre = document.getElementById('admin-game-genre');
 
 /** @type {HTMLDivElement|null} */
 export const adminGameGenreSelect = document.getElementById('admin-game-genre-select');
-
-/** @type {HTMLDataListElement|null} */
-export const adminConsolesList = document.getElementById('admin-consoles-list');
 
 /** @type {HTMLInputElement|null} */
 export const adminSearch = document.getElementById('admin-search');
@@ -105,7 +102,7 @@ export const editGameId = document.getElementById('edit-game-id');
 /** @type {HTMLInputElement|null} */
 export const editGameName = document.getElementById('edit-game-name');
 
-/** @type {HTMLInputElement|null} */
+/** @type {HTMLSelectElement|null} */
 export const editGameConsole = document.getElementById('edit-game-console');
 
 /** @type {HTMLInputElement|null} */
@@ -113,9 +110,6 @@ export const editGameGenre = document.getElementById('edit-game-genre');
 
 /** @type {HTMLDivElement|null} */
 export const editGameGenreSelect = document.getElementById('edit-game-genre-select');
-
-/** @type {HTMLDataListElement|null} */
-export const editConsolesList = document.getElementById('edit-consoles-list');
 
 /** @type {HTMLDivElement|null} */
 export const editRatingsList = document.getElementById('edit-ratings-list');
@@ -296,3 +290,9 @@ export const adminAddGenreBtn = document.getElementById('admin-add-genre-btn');
 
 /** @type {HTMLDivElement|null} */
 export const adminGenresList = document.getElementById('admin-genres-list');
+
+/** @type {HTMLInputElement|null} */
+export const adminGenresSearch = document.getElementById('admin-genres-search');
+
+/** @type {HTMLSpanElement|null} */
+export const adminGenresCount = document.getElementById('admin-genres-count');

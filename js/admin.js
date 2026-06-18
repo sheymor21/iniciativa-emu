@@ -2,7 +2,6 @@
 
 import { turso } from './turso-client.js';
 import {
-  adminConsolesList,
   adminForm,
   adminGameConsole,
   adminGameGenre,
@@ -11,6 +10,8 @@ import {
   adminGameName,
   adminGamesTableBody,
   adminGenresList,
+  adminGenresSearch,
+  adminGenresCount,
   adminModal,
   adminNewGenreName,
   adminSearch,
@@ -18,7 +19,6 @@ import {
   adminTabs,
   adminTabPanels,
   adminUsersTableBody,
-  editConsolesList,
   editForm,
   editGameConsole,
   editGameGenre,
@@ -82,21 +82,23 @@ export function switchAdminTab(tabName) {
   });
 
   if (tabName === 'genres') {
+    if (adminGenresSearch) adminGenresSearch.value = '';
     renderAdminGenres();
   }
 }
 
 /**
- * Render the console datalist in the admin form.
+ * Render the console dropdown in the admin form.
  */
 export function renderAdminConsolesList() {
-  if (!adminConsolesList) return;
+  if (!adminGameConsole) return;
 
-  adminConsolesList.innerHTML = '';
+  adminGameConsole.innerHTML = '<option value="" disabled selected>Seleccionar consola...</option>';
   for (const c of [...new Set(allGames.map(g => g.console))].sort()) {
     const option = document.createElement('option');
     option.value = c;
-    adminConsolesList.appendChild(option);
+    option.textContent = c;
+    adminGameConsole.appendChild(option);
   }
 }
 
@@ -137,23 +139,43 @@ export function initGenreSelectors() {
 
 /**
  * Render the genre management list.
+ * @param {string} [filter] - Optional search filter.
  */
-export function renderAdminGenres() {
+export function renderAdminGenres(filter = '') {
   if (!adminGenresList) return;
 
   if (adminGenres.length === 0) {
     adminGenresList.innerHTML = '<span class="genre-placeholder">No hay géneros registrados.</span>';
+    if (adminGenresCount) adminGenresCount.textContent = '';
     return;
   }
 
-  adminGenresList.innerHTML = adminGenres.map(genre => `
+  const term = filter.trim().toLowerCase();
+  const filtered = term
+    ? adminGenres.filter(g => g.toLowerCase().includes(term))
+    : adminGenres;
+
+  if (adminGenresCount) {
+    const total = adminGenres.length;
+    const showing = filtered.length;
+    adminGenresCount.innerHTML = showing === total
+      ? `<strong>${total}</strong> género${total !== 1 ? 's' : ''}`
+      : `<strong>${showing}</strong> de ${total} género${total !== 1 ? 's' : ''}`;
+  }
+
+  if (filtered.length === 0) {
+    adminGenresList.innerHTML = '<span class="genre-placeholder">Ningún género coincide con la búsqueda.</span>';
+    return;
+  }
+
+  adminGenresList.innerHTML = filtered.map(genre => `
     <span class="genre-management-item">
-      ${escapeHtml(genre)}
-      <button type="button" class="btn btn-danger" data-genre="${escapeHtml(genre)}" aria-label="Eliminar ${escapeHtml(genre)}">×</button>
+      <span class="genre-name">${escapeHtml(genre)}</span>
+      <button type="button" class="genre-delete-btn" data-genre="${escapeHtml(genre)}" aria-label="Eliminar ${escapeHtml(genre)}" title="Eliminar ${escapeHtml(genre)}">×</button>
     </span>
   `).join('');
 
-  for (const btn of adminGenresList.querySelectorAll('button')) {
+  for (const btn of adminGenresList.querySelectorAll('.genre-delete-btn')) {
     btn.addEventListener('click', () => deleteGenre(btn.dataset.genre));
   }
 }
@@ -168,6 +190,7 @@ export async function addGenre() {
   try {
     await turso.execute('INSERT INTO genres (name) VALUES (?)', [name]);
     adminNewGenreName.value = '';
+    if (adminGenresSearch) adminGenresSearch.value = '';
     await loadAdminGenres();
     renderAdminGenres();
     adminGenreSelect?.setGenres(adminGenres);
@@ -299,20 +322,21 @@ export async function saveAdminGame(event) {
  */
 export function openEditModal(gameId) {
   const game = allGames.find(g => g.id === gameId);
-  if (!game || !editGameId || !editGameName || !editGameConsole || !editGameGenre || !editConsolesList) return;
+  if (!game || !editGameId || !editGameName || !editGameConsole || !editGameGenre) return;
 
   editGameId.value = String(game.id);
   editGameName.value = game.name;
-  editGameConsole.value = game.console;
   editGameGenre.value = game.genre;
   editGenreSelect?.setValue(game.genre);
 
-  editConsolesList.innerHTML = '';
+  editGameConsole.innerHTML = '<option value="">Seleccionar consola...</option>';
   for (const c of [...new Set(allGames.map(g => g.console))].sort()) {
     const option = document.createElement('option');
     option.value = c;
-    editConsolesList.appendChild(option);
+    option.textContent = c;
+    editGameConsole.appendChild(option);
   }
+  editGameConsole.value = game.console;
 
   if (editModal) editModal.style.display = 'flex';
   loadEditRatings(gameId);

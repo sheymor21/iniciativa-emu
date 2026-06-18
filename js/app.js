@@ -10,6 +10,7 @@ import {
   adminForm,
   adminModal,
   adminNewGenreName,
+  adminGenresSearch,
   adminNewUserBtn,
   adminSearch,
   adminSuggestionFilter,
@@ -92,6 +93,7 @@ import {
   openEditModal,
   openUserModal,
   renderAdminGames,
+  renderAdminGenres,
   resetAdminForm,
   saveAdminGame,
   saveEditGame,
@@ -188,6 +190,10 @@ adminTabs.forEach(tab => {
 });
 adminAddGenreBtn?.addEventListener('click', addGenre);
 adminNewGenreName?.addEventListener('keydown', e => { if (e.key === 'Enter') addGenre(); });
+adminGenresSearch?.addEventListener('input', (e) => {
+  const target = /** @type {HTMLInputElement} */ (e.target);
+  renderAdminGenres(target.value);
+});
 adminNewUserBtn?.addEventListener('click', () => openUserModal(null));
 
 // Edit modal.

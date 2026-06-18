@@ -119,8 +119,9 @@
           </div>
           <div class="filter-group">
             <label for="admin-game-console">Consola</label>
-            <input type="text" id="admin-game-console" required maxlength="50" list="admin-consoles-list">
-            <datalist id="admin-consoles-list"></datalist>
+            <select id="admin-game-console" required>
+              <option value="" disabled selected>Seleccionar consola...</option>
+            </select>
           </div>
           <div class="filter-group">
             <label for="admin-game-genre">Género</label>
@@ -138,11 +139,18 @@
         <div class="admin-toolbar">
           <div class="filter-group" style="max-width: 400px;">
             <label for="admin-new-genre-name">Nuevo género</label>
-            <div style="display:flex; gap:0.5rem;">
+            <div class="input-with-button">
               <input type="text" id="admin-new-genre-name" placeholder="Nombre del género" maxlength="50">
               <button type="button" id="admin-add-genre-btn" class="btn btn-primary">Agregar</button>
             </div>
           </div>
+        </div>
+        <div class="genre-panel-header">
+          <div class="filter-group genre-search-group">
+            <label for="admin-genres-search">Buscar género</label>
+            <input type="text" id="admin-genres-search" placeholder="Filtrar géneros...">
+          </div>
+          <span class="genre-count" id="admin-genres-count"></span>
         </div>
         <div class="genre-management-list" id="admin-genres-list"></div>
       </section>
@@ -234,8 +242,9 @@
           </div>
           <div class="filter-group">
             <label for="edit-game-console">Consola</label>
-            <input type="text" id="edit-game-console" required maxlength="50" list="edit-consoles-list">
-            <datalist id="edit-consoles-list"></datalist>
+            <select id="edit-game-console" required>
+              <option value="">Seleccionar consola...</option>
+            </select>
           </div>
           <div class="filter-group">
             <label for="edit-game-genre">Género</label>
