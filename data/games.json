@@ -3,55 +3,55 @@
     "id": 1,
     "name": "Animorphs",
     "console": "PSX",
-    "genre": "Aventura / Acción"
+    "genre": "Adventure / Action"
   },
   {
     "id": 2,
     "name": "Alundra",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 3,
     "name": "Alundra 2",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 4,
     "name": "Battle Hunters",
     "console": "PSX",
-    "genre": "Acción / Lucha"
+    "genre": "Action / Fighting"
   },
   {
     "id": 5,
     "name": "Beyond the Beyond",
     "console": "PSX",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 6,
     "name": "Blaster Master",
     "console": "PSX",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 7,
     "name": "Castlevania: Symphony of the Night",
     "console": "PSX",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 8,
     "name": "Chaos Break",
     "console": "PSX",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 9,
     "name": "D",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 10,
@@ -63,7 +63,7 @@
     "id": 11,
     "name": "Dragon Valor",
     "console": "PSX",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 12,
@@ -75,37 +75,37 @@
     "id": 13,
     "name": "Eternal Eyes",
     "console": "PSX",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 14,
     "name": "Firehugs",
     "console": "PSX",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 15,
     "name": "Front Mission 3",
     "console": "PSX",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 16,
     "name": "Gex",
     "console": "PSX",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 17,
     "name": "Gex: Enter the Gecko",
     "console": "PSX",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 18,
     "name": "Gex 3: Deep Cover Gecko",
     "console": "PSX",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 19,
@@ -117,13 +117,13 @@
     "id": 20,
     "name": "Glover",
     "console": "PSX",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 21,
     "name": "Harmful Park: High-brow Gag and Pure Shooting",
     "console": "PSX",
-    "genre": "Shooter / Comedia"
+    "genre": "Shooter / Comedy"
   },
   {
     "id": 22,
@@ -135,31 +135,31 @@
     "id": 23,
     "name": "Jade Cocoon: Story of the Tamamayu",
     "console": "PSX",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 24,
     "name": "Kingsley's Adventure",
     "console": "PSX",
-    "genre": "Aventura / Acción"
+    "genre": "Adventure / Action"
   },
   {
     "id": 25,
     "name": "MediEvil",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 26,
     "name": "Nanotek Warrior",
     "console": "PSX",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 27,
     "name": "Nightmare Creatures 2",
     "console": "PSX",
-    "genre": "Acción / Horror"
+    "genre": "Action / Horror"
   },
   {
     "id": 28,
@@ -171,37 +171,37 @@
     "id": 29,
     "name": "Omega Boost",
     "console": "PSX",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 30,
     "name": "PaRappa the Rapper",
     "console": "PSX",
-    "genre": "Música"
+    "genre": "Music"
   },
   {
     "id": 31,
     "name": "Panzer Bandit",
     "console": "PSX",
-    "genre": "Acción / Lucha"
+    "genre": "Action / Fighting"
   },
   {
     "id": 32,
     "name": "Pepsiman",
     "console": "PSX",
-    "genre": "Aventura / Plataformas"
+    "genre": "Adventure / Platformer"
   },
   {
     "id": 33,
     "name": "Policenauts",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 34,
     "name": "Rapid Reload",
     "console": "PSX",
-    "genre": "Shooter / Acción"
+    "genre": "Shooter / Action"
   },
   {
     "id": 35,
@@ -213,7 +213,7 @@
     "id": 36,
     "name": "RC Revenge",
     "console": "PSX",
-    "genre": "Carreras / Acción"
+    "genre": "Racing / Action"
   },
   {
     "id": 37,
@@ -225,37 +225,37 @@
     "id": 38,
     "name": "Spider: The Video Game",
     "console": "PSX",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 39,
     "name": "Sled Storm",
     "console": "PSX",
-    "genre": "Carreras / Deporte"
+    "genre": "Racing / Sports"
   },
   {
     "id": 40,
     "name": "Strider 2",
     "console": "PSX",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 41,
     "name": "Tail Concerto",
     "console": "PSX",
-    "genre": "Aventura / Plataformas"
+    "genre": "Adventure / Platformer"
   },
   {
     "id": 42,
     "name": "Tenchu: Stealth Assassins",
     "console": "PSX",
-    "genre": "Sigilo"
+    "genre": "Stealth"
   },
   {
     "id": 43,
     "name": "Tiny Tank",
     "console": "PSX",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 44,
@@ -267,13 +267,13 @@
     "id": 45,
     "name": "The Misadventures of Tron Bonne",
     "console": "PSX",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 46,
     "name": "Threads of Fate",
     "console": "PSX",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 47,
@@ -297,7 +297,7 @@
     "id": 50,
     "name": "WipEout 2097",
     "console": "PSX",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 51,
@@ -315,13 +315,13 @@
     "id": 53,
     "name": "Azumi",
     "console": "PS2",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 54,
     "name": "Airblade",
     "console": "PS2",
-    "genre": "Acción / Carreras"
+    "genre": "Action / Racing"
   },
   {
     "id": 55,
@@ -339,43 +339,43 @@
     "id": 57,
     "name": "Baldr Bullet",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 58,
     "name": "Burnout 3: Takedown",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 59,
     "name": "Beyond Good & Evil",
     "console": "PS2",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 60,
     "name": "Blood Will Tell",
     "console": "PS2",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 61,
     "name": "Crazy Taxi",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 62,
     "name": "Clock Tower 3",
     "console": "PS2",
-    "genre": "Horror / Supervivencia"
+    "genre": "Survival Horror"
   },
   {
     "id": 63,
     "name": "Circuit Blasters",
     "console": "PS2",
-    "genre": "Carreras / Acción"
+    "genre": "Racing / Action"
   },
   {
     "id": 64,
@@ -387,13 +387,13 @@
     "id": 65,
     "name": "Dark Chronicle",
     "console": "PS2",
-    "genre": "RPG de acción, JRPG, Aventura"
+    "genre": "ARPG / JRPG / Adventure"
   },
   {
     "id": 66,
     "name": "Dark Cloud",
     "console": "PS2",
-    "genre": "RPG de acción, JRPG, Aventura"
+    "genre": "ARPG / JRPG / Adventure"
   },
   {
     "id": 67,
@@ -405,55 +405,55 @@
     "id": 68,
     "name": "Freekstyle",
     "console": "PS2",
-    "genre": "Deporte / Carreras"
+    "genre": "Sports / Racing"
   },
   {
     "id": 69,
     "name": "Front Mission 4",
     "console": "PS2",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 70,
     "name": "G-Saviour",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 71,
     "name": "God Hand",
     "console": "PS2",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 72,
     "name": "God of War",
     "console": "PS2",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 73,
     "name": "God of War II",
     "console": "PS2",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 74,
     "name": "Gun",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 75,
     "name": "Headseeker",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 76,
     "name": "Ico",
     "console": "PS2",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 77,
@@ -465,25 +465,25 @@
     "id": 78,
     "name": "Jak and Daxter: The Precursor Legacy",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 79,
     "name": "Jak II",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 80,
     "name": "Jak 3",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 81,
     "name": "Jade Cocoon 2",
     "console": "PS2",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 82,
@@ -501,67 +501,67 @@
     "id": 84,
     "name": "Maximo: Ghosts to Glory",
     "console": "PS2",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 85,
     "name": "Manhunt",
     "console": "PS2",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 86,
     "name": "NYR New York Race",
     "console": "PS2",
-    "genre": "Carreras / Aventura"
+    "genre": "Racing / Adventure"
   },
   {
     "id": 87,
     "name": "Nano Breaker",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 88,
     "name": "Mobile Suit Gundam Zeonic Front",
     "console": "PS2",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 89,
     "name": "Mobile Suit Gundam Federation vs Zeon",
     "console": "PS2",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 90,
     "name": "Need For Speed Most Wanted",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 91,
     "name": "Nitrobike",
     "console": "PS2",
-    "genre": "Carreras / Acción"
+    "genre": "Racing / Action"
   },
   {
     "id": 92,
     "name": "OutRun 2006",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 93,
     "name": "Psychonauts",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 94,
     "name": "Rygar the Legendary Adventure",
     "console": "PS2",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 95,
@@ -573,13 +573,13 @@
     "id": 96,
     "name": "Ratchet & Clank: Up Your Arsenal",
     "console": "PS2",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 97,
     "name": "Ring of Red",
     "console": "PS2",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 98,
@@ -591,19 +591,19 @@
     "id": 99,
     "name": "Sakura Wars: So Long, My Love",
     "console": "PS2",
-    "genre": "RPG / Simulador de citas"
+    "genre": "RPG / Dating Sim"
   },
   {
     "id": 100,
     "name": "Shadow of Memories",
     "console": "PS2",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 101,
     "name": "Shadow of the Colossus",
     "console": "PS2",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 102,
@@ -615,49 +615,49 @@
     "id": 103,
     "name": "Sly Cooper",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 104,
     "name": "Sly Cooper 2",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 105,
     "name": "Sly Cooper 3",
     "console": "PS2",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 106,
     "name": "Siren",
     "console": "PS2",
-    "genre": "Horror / Supervivencia"
+    "genre": "Survival Horror"
   },
   {
     "id": 107,
     "name": "Soul Nomad & the World Eaters",
     "console": "PS2",
-    "genre": "TRPG"
+    "genre": "Tactical RPG"
   },
   {
     "id": 108,
     "name": "Sub Rebellion",
     "console": "PS2",
-    "genre": "Shooter / Acción"
+    "genre": "Shooter / Action"
   },
   {
     "id": 109,
     "name": "Super Robot Wars: Original Generations (necesita parche al ingles)",
     "console": "PS2",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 110,
     "name": "Steambot Chronicles (El tutorial va mal)",
     "console": "PS2",
-    "genre": "Acción-Aventura / Sandbox"
+    "genre": "Action-Adventure / Sandbox"
   },
   {
     "id": 111,
@@ -669,19 +669,19 @@
     "id": 112,
     "name": "TearRing Saga: Berwick Saga (Necesita parche al ingles)",
     "console": "PS2",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 113,
     "name": "The Bouncer",
     "console": "PS2",
-    "genre": "Acción / Beat 'em Up"
+    "genre": "Action / Beat 'em Up"
   },
   {
     "id": 114,
     "name": "The Red Star",
     "console": "PS2",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 115,
@@ -699,25 +699,25 @@
     "id": 117,
     "name": "Tokyo Xtreme Racer 3",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 118,
     "name": "Tony Hawk Pro Skater 4",
     "console": "PS2",
-    "genre": "Deportes"
+    "genre": "Sports"
   },
   {
     "id": 119,
     "name": "Viewtiful Joe 2",
     "console": "PS2",
-    "genre": "Side-Scrolling Beat 'em Up"
+    "genre": "Beat 'em Up"
   },
   {
     "id": 120,
     "name": "Downhill Domination",
     "console": "PS2",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 121,
@@ -771,7 +771,7 @@
     "id": 129,
     "name": "Zone of the Enders",
     "console": "PS2",
-    "genre": "Acción / Mecha"
+    "genre": "Action / Mecha"
   },
   {
     "id": 130,
@@ -783,7 +783,7 @@
     "id": 131,
     "name": "Daxter",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 132,
@@ -795,37 +795,37 @@
     "id": 133,
     "name": "Dissidia 012 Final Fantasy",
     "console": "PSP",
-    "genre": "Lucha / RPG"
+    "genre": "Fighting / RPG"
   },
   {
     "id": 134,
     "name": "God of War: Chains of Olympus",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 135,
     "name": "God of War: Ghost of Sparta",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 136,
     "name": "Grand Theft Auto: Chinatown Wars",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 137,
     "name": "Grand Theft Auto: Liberty City Stories",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 138,
     "name": "Grand Theft Auto: Vice City Stories",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 139,
@@ -837,55 +837,55 @@
     "id": 140,
     "name": "LocoRoco",
     "console": "PSP",
-    "genre": "Puzzle / Plataforma"
+    "genre": "Puzzle / Platformer"
   },
   {
     "id": 141,
     "name": "LocoRoco 2",
     "console": "PSP",
-    "genre": "Puzzle / Plataforma"
+    "genre": "Puzzle / Platformer"
   },
   {
     "id": 142,
     "name": "Metal Gear Solid: Peace Walker",
     "console": "PSP",
-    "genre": "Acción / Sigilo"
+    "genre": "Action / Stealth"
   },
   {
     "id": 143,
     "name": "Metal Gear Solid: Portable Ops",
     "console": "PSP",
-    "genre": "Acción / Sigilo"
+    "genre": "Action / Stealth"
   },
   {
     "id": 144,
     "name": "Mega Man Maverick Hunter X",
     "console": "PSP",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 145,
     "name": "Patapon",
     "console": "PSP",
-    "genre": "Ritmo / Estrategia"
+    "genre": "Rhythm / Strategy"
   },
   {
     "id": 146,
     "name": "Ratchet & Clank: Size Matters",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 147,
     "name": "Secret Agent Clank",
     "console": "PSP",
-    "genre": "Acción-Aventura"
+    "genre": "Action-Adventure"
   },
   {
     "id": 148,
     "name": "Wild Arms XF",
     "console": "PSP",
-    "genre": "RPG Táctico"
+    "genre": "Tactical RPG"
   },
   {
     "id": 149,
@@ -897,13 +897,13 @@
     "id": 150,
     "name": "Yu-Gi-Oh! Tag Force 5",
     "console": "PSP",
-    "genre": "Juego de Cartas"
+    "genre": "Card Game"
   },
   {
     "id": 151,
     "name": "Pursuit Force",
     "console": "PSP",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 152,
@@ -921,13 +921,13 @@
     "id": 154,
     "name": "Gurumin: A Monstrous Adventure",
     "console": "PSP",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 155,
     "name": "Tokobot",
     "console": "PSP",
-    "genre": "Puzzle / Plataforma"
+    "genre": "Puzzle / Platformer"
   },
   {
     "id": 156,
@@ -969,7 +969,7 @@
     "id": 162,
     "name": "Rengoku II: The Stairway To Heaven",
     "console": "PSP",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 163,
@@ -981,31 +981,31 @@
     "id": 164,
     "name": "Batman: The Video Game",
     "console": "NES",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 165,
     "name": "Bionic Commando",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 166,
     "name": "Blaster Master",
     "console": "NES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 167,
     "name": "Castlevania",
     "console": "NES",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 168,
     "name": "Castlevania III",
     "console": "NES",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 169,
@@ -1023,19 +1023,19 @@
     "id": 171,
     "name": "Darkwing Duck",
     "console": "NES",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 172,
     "name": "Double Dragon II",
     "console": "NES",
-    "genre": "Beat 'em up"
+    "genre": "Beat 'em Up"
   },
   {
     "id": 173,
     "name": "DuckTales",
     "console": "NES",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 174,
@@ -1047,91 +1047,91 @@
     "id": 175,
     "name": "G.I. Joe: A Real American Hero",
     "console": "NES",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 176,
     "name": "Gargoyle's Quest",
     "console": "NES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 177,
     "name": "Gargoyle's Quest 2",
     "console": "NES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 178,
     "name": "Gun-Nac",
     "console": "NES",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 179,
     "name": "Ikaro",
     "console": "NES",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 180,
     "name": "Kirby's Adventure",
     "console": "NES",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 181,
     "name": "Life Force",
     "console": "NES",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 182,
     "name": "Mega Man",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 183,
     "name": "Mega Man 2",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 184,
     "name": "Mega Man 3",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 185,
     "name": "Mega Man 4",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 186,
     "name": "Mega Man 5",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 187,
     "name": "Mega Man 6",
     "console": "NES",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 188,
     "name": "Metroid",
     "console": "NES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 189,
     "name": "Ninja Gaiden",
     "console": "NES",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 190,
@@ -1143,19 +1143,19 @@
     "id": 191,
     "name": "StarTropics",
     "console": "NES",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 192,
     "name": "The Legend of Zelda",
     "console": "NES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 193,
     "name": "ActRaiser",
     "console": "SNES",
-    "genre": "Acción / Simulación"
+    "genre": "Action / Simulation"
   },
   {
     "id": 194,
@@ -1173,7 +1173,7 @@
     "id": 196,
     "name": "Captain Commando",
     "console": "SNES",
-    "genre": "Beat 'em up"
+    "genre": "Beat 'em Up"
   },
   {
     "id": 197,
@@ -1197,97 +1197,97 @@
     "id": 200,
     "name": "Cybernator",
     "console": "SNES",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 201,
     "name": "Donkey Kong Country",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 202,
     "name": "Donkey Kong Country 2",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 203,
     "name": "Donkey Kong Country 3",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 204,
     "name": "Earthworm Jim",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 205,
     "name": "Earthworm Jim 2",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 206,
     "name": "Fire Emblem: Genealogy of the Holy War",
     "console": "SNES",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 207,
     "name": "Fire Emblem: Thracia 776",
     "console": "SNES",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 208,
     "name": "Final Fight",
     "console": "SNES",
-    "genre": "Beat 'em up"
+    "genre": "Beat 'em Up"
   },
   {
     "id": 209,
     "name": "Flashback: La Búsqueda de la Identidad",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 210,
     "name": "Gun Hazard",
     "console": "SNES",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 211,
     "name": "G.I. Joe: A Real American Hero",
     "console": "SNES",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 212,
     "name": "Gradius III",
     "console": "SNES",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 213,
     "name": "Harvest Moon",
     "console": "SNES",
-    "genre": "Simulación / Agricultura"
+    "genre": "Simulation / Farming"
   },
   {
     "id": 214,
     "name": "Illusion of Gaia",
     "console": "SNES",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 215,
     "name": "Jungle Strike",
     "console": "SNES",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 216,
@@ -1299,13 +1299,13 @@
     "id": 217,
     "name": "Kirby's Dream Land 3",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 218,
     "name": "Kirby Super Star",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 219,
@@ -1323,37 +1323,37 @@
     "id": 221,
     "name": "Mario Paint",
     "console": "SNES",
-    "genre": "Creativo / Simulación"
+    "genre": "Creative / Simulation"
   },
   {
     "id": 222,
     "name": "Mega Man Soccer",
     "console": "SNES",
-    "genre": "Deportes"
+    "genre": "Sports"
   },
   {
     "id": 223,
     "name": "Metal Warriors",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 224,
     "name": "Mega Man X",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 225,
     "name": "Mega Man X2",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 226,
     "name": "Mega Man X3",
     "console": "SNES",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 227,
@@ -1365,37 +1365,37 @@
     "id": 228,
     "name": "Out of this World",
     "console": "SNES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 229,
     "name": "Ogre Battle: La Marcha de la Reina Negra",
     "console": "SNES",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 230,
     "name": "Phalanx",
     "console": "SNES",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 231,
     "name": "Paperboy 2",
     "console": "SNES",
-    "genre": "Acción, Aventura, Arcade"
+    "genre": "Action / Adventure / Arcade"
   },
   {
     "id": 232,
     "name": "Pilotwings",
     "console": "SNES",
-    "genre": "Simulación"
+    "genre": "Simulation"
   },
   {
     "id": 233,
     "name": "Populous",
     "console": "SNES",
-    "genre": "Juego de Dios / Simulación"
+    "genre": "God Game / Simulation"
   },
   {
     "id": 234,
@@ -1407,19 +1407,19 @@
     "id": 235,
     "name": "Secret of Evermore",
     "console": "SNES",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 236,
     "name": "Sim City",
     "console": "SNES",
-    "genre": "Simulación"
+    "genre": "Simulation"
   },
   {
     "id": 237,
     "name": "Soul Blazer",
     "console": "SNES",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 238,
@@ -1431,127 +1431,127 @@
     "id": 239,
     "name": "Super Castlevania 4",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 240,
     "name": "Super Double Dragon",
     "console": "SNES",
-    "genre": "Beat 'em up"
+    "genre": "Beat 'em Up"
   },
   {
     "id": 241,
     "name": "Super Famicom Wars",
     "console": "SNES",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 242,
     "name": "Super Ghouls 'n Ghosts",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 243,
     "name": "Super Mario All-Stars",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 244,
     "name": "Super Mario World 2: Yoshi's Island",
     "console": "SNES",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 245,
     "name": "Super Metroid",
     "console": "SNES",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 246,
     "name": "Super Punch-Out!!",
     "console": "SNES",
-    "genre": "Deportes / Lucha"
+    "genre": "Sports / Fighting"
   },
   {
     "id": 247,
     "name": "Super Star",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 248,
     "name": "The Adventures of Batman & Robin",
     "console": "SNES",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 249,
     "name": "The Legend of Zelda: A Link to the Past",
     "console": "SNES",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 250,
     "name": "U.N. Squadron",
     "console": "SNES",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 251,
     "name": "Banjo-Kazooie",
     "console": "N64",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 252,
     "name": "Banjo-Tooie",
     "console": "N64",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 253,
     "name": "Beetle Adventure Racing",
     "console": "N64",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 254,
     "name": "Body Harvest",
     "console": "N64",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 255,
     "name": "Blast Corps",
     "console": "N64",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 256,
     "name": "Conker's Bad Fur Day",
     "console": "N64",
-    "genre": "Plataforma / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 257,
     "name": "Custom Robo",
     "console": "N64",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 258,
     "name": "Diddy Kong Racing",
     "console": "N64",
-    "genre": "Carreras / Aventura"
+    "genre": "Racing / Adventure"
   },
   {
     "id": 259,
     "name": "Donkey Kong 64",
     "console": "N64",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 260,
@@ -1563,49 +1563,49 @@
     "id": 261,
     "name": "Goemon's Great Adventure",
     "console": "N64",
-    "genre": "Aventura / Acción"
+    "genre": "Adventure / Action"
   },
   {
     "id": 262,
     "name": "Harvest Moon 64",
     "console": "N64",
-    "genre": "Simulación / Aventura"
+    "genre": "Simulation / Adventure"
   },
   {
     "id": 263,
     "name": "Hybrid Heaven",
     "console": "N64",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 264,
     "name": "Super Mario 64",
     "console": "N64",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 265,
     "name": "Quest 64",
     "console": "N64",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 266,
     "name": "Mickey’s Speedway USA",
     "console": "N64",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 267,
     "name": "Mischief Makers",
     "console": "N64",
-    "genre": "Acción / Plataforma"
+    "genre": "Action / Platformer"
   },
   {
     "id": 268,
     "name": "Ogre Battle 64: Person of Lordly Caliber",
     "console": "N64",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 269,
@@ -1617,13 +1617,13 @@
     "id": 270,
     "name": "Space Station Silicon Valley",
     "console": "N64",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 271,
     "name": "Spider-Man",
     "console": "N64",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 272,
@@ -1635,25 +1635,25 @@
     "id": 273,
     "name": "Super Mario Land",
     "console": "GB",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 274,
     "name": "Super Mario Land 2",
     "console": "GB",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 275,
     "name": "Wario Land 2",
     "console": "GB",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 276,
     "name": "Survival Kids",
     "console": "GB",
-    "genre": "Aventura / Supervivencia"
+    "genre": "Adventure / Survival"
   },
   {
     "id": 277,
@@ -1665,55 +1665,55 @@
     "id": 278,
     "name": "Shantae",
     "console": "GBC",
-    "genre": "Plataformas / Aventura"
+    "genre": "Platformer / Adventure"
   },
   {
     "id": 279,
     "name": "Survival Kids",
     "console": "GBC",
-    "genre": "Rol, Acción, Aventura"
+    "genre": "RPG / Action / Adventure"
   },
   {
     "id": 280,
     "name": "The Legend of Zelda: Link's Awakening DX",
     "console": "GBC",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 281,
     "name": "The Legend of Zelda: Oracle of Ages",
     "console": "GBC",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 282,
     "name": "The Legend of Zelda: Oracle of Seasons",
     "console": "GBC",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 283,
     "name": "Wario Land 3",
     "console": "GBC",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 284,
     "name": "Advance Wars",
     "console": "GBA",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 285,
     "name": "Advance Wars 2",
     "console": "GBA",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 286,
     "name": "Astro Boy: Omega Factor",
     "console": "GBA",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 287,
@@ -1731,61 +1731,61 @@
     "id": 289,
     "name": "Boktai (Configuración Solar)",
     "console": "GBA",
-    "genre": "Aventura / Acción"
+    "genre": "Adventure / Action"
   },
   {
     "id": 290,
     "name": "Boktai 2 (Configuración Solar)",
     "console": "GBA",
-    "genre": "Aventura / Acción"
+    "genre": "Adventure / Action"
   },
   {
     "id": 291,
     "name": "Dragon Ball: Advance Adventure",
     "console": "GBA",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 292,
     "name": "Dragon Ball: Legacy of Goku",
     "console": "GBA",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 293,
     "name": "Dragon Ball: Legacy of Goku 2",
     "console": "GBA",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 294,
     "name": "Dragon Ball: Buu's Saga",
     "console": "GBA",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 295,
     "name": "Drill Dozer",
     "console": "GBA",
-    "genre": "Acción / Plataformas"
+    "genre": "Action / Platformer"
   },
   {
     "id": 296,
     "name": "Fire Emblem",
     "console": "GBA",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 297,
     "name": "Fire Emblem Binding Blade",
     "console": "GBA",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 298,
     "name": "Fire Emblem: Sacred Stones",
     "console": "GBA",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 299,
@@ -1827,91 +1827,91 @@
     "id": 305,
     "name": "Klonoa: Empire of Dreams",
     "console": "GBA",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 306,
     "name": "Kingdom Hearts: Chain of Memories",
     "console": "GBA",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 307,
     "name": "Kuru Kuru Kururin",
     "console": "GBA",
-    "genre": "Puzzle / Acción"
+    "genre": "Puzzle / Action"
   },
   {
     "id": 308,
     "name": "Lady Sia",
     "console": "GBA",
-    "genre": "Plataformas / Aventura"
+    "genre": "Platformer / Adventure"
   },
   {
     "id": 309,
     "name": "Lady Sia 2",
     "console": "GBA",
-    "genre": "Plataformas / Aventura"
+    "genre": "Platformer / Adventure"
   },
   {
     "id": 310,
     "name": "Mario Golf",
     "console": "GBA",
-    "genre": "Deportes"
+    "genre": "Sports"
   },
   {
     "id": 311,
     "name": "Mario Tennis: Power Tour",
     "console": "GBA",
-    "genre": "Deportes"
+    "genre": "Sports"
   },
   {
     "id": 312,
     "name": "Mario vs. Donkey Kong",
     "console": "GBA",
-    "genre": "Plataformas / Puzzle"
+    "genre": "Platformer / Puzzle"
   },
   {
     "id": 313,
     "name": "Mario Pinball",
     "console": "GBA",
-    "genre": "Puzzle / Acción"
+    "genre": "Puzzle / Action"
   },
   {
     "id": 314,
     "name": "Magi Nation",
     "console": "GBA",
-    "genre": "JRPG, Aventura, Estrategia"
+    "genre": "JRPG / Adventure / Strategy"
   },
   {
     "id": 315,
     "name": "Medabots",
     "console": "GBA",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 316,
     "name": "Metal Slug Advance",
     "console": "GBA",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 317,
     "name": "Metal Walker",
     "console": "GBA",
-    "genre": "Acción, Rol, Estrategia"
+    "genre": "Action / RPG / Strategy"
   },
   {
     "id": 318,
     "name": "Metroid: Fusion",
     "console": "GBA",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 319,
     "name": "Metroid: Zero Mission",
     "console": "GBA",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 320,
@@ -1935,85 +1935,85 @@
     "id": 323,
     "name": "The Sims",
     "console": "GBA",
-    "genre": "Simulación"
+    "genre": "Simulation"
   },
   {
     "id": 324,
     "name": "Sonic Advance",
     "console": "GBA",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 325,
     "name": "Sonic Advance 2",
     "console": "GBA",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 326,
     "name": "Sonic Advance 3",
     "console": "GBA",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 327,
     "name": "Sonic Battle",
     "console": "GBA",
-    "genre": "Lucha"
+    "genre": "Fighting"
   },
   {
     "id": 328,
     "name": "Splinter Cell",
     "console": "GBA",
-    "genre": "Acción / Sigilo"
+    "genre": "Action / Stealth"
   },
   {
     "id": 329,
     "name": "Super Robot Taisen: Original Generation 2",
     "console": "GBA",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 330,
     "name": "Summon Night: Swordcraft Story",
     "console": "GBA",
-    "genre": "RPG / Estrategia"
+    "genre": "RPG / Strategy"
   },
   {
     "id": 331,
     "name": "Summon Night: Swordcraft Story 2",
     "console": "GBA",
-    "genre": "RPG / Estrategia"
+    "genre": "RPG / Strategy"
   },
   {
     "id": 332,
     "name": "Summon Night: Swordcraft Story 3",
     "console": "GBA",
-    "genre": "RPG / Estrategia"
+    "genre": "RPG / Strategy"
   },
   {
     "id": 333,
     "name": "Sword of Mana",
     "console": "GBA",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 334,
     "name": "Wario Land 4",
     "console": "GBA",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 335,
     "name": "The Legend of Zelda: The Minish Cap",
     "console": "GBA",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 336,
     "name": "Animal Crossing",
     "console": "GameCube",
-    "genre": "Simulación"
+    "genre": "Simulation"
   },
   {
     "id": 337,
@@ -2025,7 +2025,7 @@
     "id": 338,
     "name": "Battalion Wars",
     "console": "GameCube",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 339,
@@ -2037,25 +2037,25 @@
     "id": 340,
     "name": "Billy Hatcher and the Giant Egg",
     "console": "GameCube",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 341,
     "name": "Bomberman Jetters",
     "console": "GameCube",
-    "genre": "Multijugador / Estrategia"
+    "genre": "Multiplayer / Strategy"
   },
   {
     "id": 342,
     "name": "Chibi-Robo",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 343,
     "name": "Eternal Darkness",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 344,
@@ -2067,7 +2067,7 @@
     "id": 345,
     "name": "Geist",
     "console": "GameCube",
-    "genre": "FPS / Aventura"
+    "genre": "FPS / Adventure"
   },
   {
     "id": 346,
@@ -2079,7 +2079,7 @@
     "id": 347,
     "name": "Ikaruga",
     "console": "GameCube",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 348,
@@ -2091,7 +2091,7 @@
     "id": 349,
     "name": "Luigi's Mansion",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 350,
@@ -2103,25 +2103,25 @@
     "id": 351,
     "name": "Metroid Prime",
     "console": "GameCube",
-    "genre": "FPS / Aventura"
+    "genre": "FPS / Adventure"
   },
   {
     "id": 352,
     "name": "Metroid Prime 2",
     "console": "GameCube",
-    "genre": "FPS / Aventura"
+    "genre": "FPS / Adventure"
   },
   {
     "id": 353,
     "name": "Super Monkey Ball",
     "console": "GameCube",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 354,
     "name": "Super Monkey Ball 2",
     "console": "GameCube",
-    "genre": "Plataforma"
+    "genre": "Platformer"
   },
   {
     "id": 355,
@@ -2157,13 +2157,13 @@
     "id": 360,
     "name": "The Simpsons: Hit & Run",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 361,
     "name": "Star Fox Adventures",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 362,
@@ -2175,37 +2175,37 @@
     "id": 363,
     "name": "Tak and the Power of Juju",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 364,
     "name": "The Legend of Zelda: Ocarina of Time Master Quest",
     "console": "GameCube",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 365,
     "name": "999",
     "console": "NDS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 366,
     "name": "Advance Wars: Dark Conflict",
     "console": "NDS",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 367,
     "name": "Advance Wars: Dual Strike",
     "console": "NDS",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 368,
     "name": "Assassin's Creed II: Discovery",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 369,
@@ -2217,7 +2217,7 @@
     "id": 370,
     "name": "Bakugan",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 371,
@@ -2235,13 +2235,13 @@
     "id": 373,
     "name": "Chibi-Robo!",
     "console": "NDS",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 374,
     "name": "Children of Mana",
     "console": "NDS",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 375,
@@ -2253,37 +2253,37 @@
     "id": 376,
     "name": "Drone Tactics",
     "console": "NDS",
-    "genre": "Estrategia"
+    "genre": "Strategy"
   },
   {
     "id": 377,
     "name": "Dinosaur King",
     "console": "NDS",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 378,
     "name": "Dokapon Journey",
     "console": "NDS",
-    "genre": "RPG / Estrategia"
+    "genre": "RPG / Strategy"
   },
   {
     "id": 379,
     "name": "Dragon Ball: Supersonic Warriors 2",
     "console": "NDS",
-    "genre": "Lucha"
+    "genre": "Fighting"
   },
   {
     "id": 380,
     "name": "Elite Beat Agents",
     "console": "NDS",
-    "genre": "Música / Ritmo"
+    "genre": "Music / Rhythm"
   },
   {
     "id": 381,
     "name": "Fire Emblem: New Mystery",
     "console": "NDS",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 382,
@@ -2295,7 +2295,7 @@
     "id": 383,
     "name": "Ghost Trick",
     "console": "NDS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 384,
@@ -2307,73 +2307,73 @@
     "id": 385,
     "name": "Inazuma Eleven",
     "console": "NDS",
-    "genre": "RPG / Deportes"
+    "genre": "RPG / Sports"
   },
   {
     "id": 386,
     "name": "Inazuma Eleven 2",
     "console": "NDS",
-    "genre": "RPG / Deportes"
+    "genre": "RPG / Sports"
   },
   {
     "id": 387,
     "name": "Inazuma Eleven 3: Ogre",
     "console": "NDS",
-    "genre": "RPG / Deportes"
+    "genre": "RPG / Sports"
   },
   {
     "id": 388,
     "name": "Inuyasha: Secret of the Divine Jewel",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 389,
     "name": "Kirby: Canvas Curse",
     "console": "NDS",
-    "genre": "Plataformas / Puzzle"
+    "genre": "Platformer / Puzzle"
   },
   {
     "id": 390,
     "name": "Kirby: Mass Attack",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 391,
     "name": "Kirby: Mouse Attack",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 392,
     "name": "Kirby: Super Star Ultra",
     "console": "NDS",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 393,
     "name": "Kingdom Hearts 358/2 Days",
     "console": "NDS",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 394,
     "name": "Kingdom Hearts Re:coded",
     "console": "NDS",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 395,
     "name": "Luminous Arc",
     "console": "NDS",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 396,
     "name": "Lunar Knights",
     "console": "NDS",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 397,
@@ -2397,13 +2397,13 @@
     "id": 400,
     "name": "Metroid Prime: Hunters",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 401,
     "name": "New Super Mario Bros.",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 402,
@@ -2433,7 +2433,7 @@
     "id": 406,
     "name": "Pokémon Conquest",
     "console": "NDS",
-    "genre": "RPG / Estrategia"
+    "genre": "RPG / Strategy"
   },
   {
     "id": 407,
@@ -2469,25 +2469,25 @@
     "id": 412,
     "name": "Prince of Persia: The Fallen King",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 413,
     "name": "Professor Layton and the Curious Village",
     "console": "NDS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 414,
     "name": "Professor Layton and the Spectre's Call",
     "console": "NDS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 415,
     "name": "Professor Layton and the Unwound Future",
     "console": "NDS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 416,
@@ -2511,43 +2511,43 @@
     "id": 419,
     "name": "Sonic Colors",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 420,
     "name": "Sonic Rush",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 421,
     "name": "Spider-Man: Shattered Dimensions",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 422,
     "name": "Spider-Man Ultimate",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 423,
     "name": "Speed Racer",
     "console": "NDS",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 424,
     "name": "Solatorobo",
     "console": "NDS",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 425,
     "name": "Super Princess Peach",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 426,
@@ -2565,181 +2565,181 @@
     "id": 428,
     "name": "Spider-Man: Web of Shadows",
     "console": "NDS",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 429,
     "name": "The World Ends with You",
     "console": "NDS",
-    "genre": "RPG / Acción"
+    "genre": "RPG / Action"
   },
   {
     "id": 430,
     "name": "Trauma Center",
     "console": "NDS",
-    "genre": "Simulación / Puzzle"
+    "genre": "Simulation / Puzzle"
   },
   {
     "id": 431,
     "name": "The Wizard of Oz: Beyond the Yellow Brick Road",
     "console": "NDS",
-    "genre": "JRPG, Aventura, Fantasía"
+    "genre": "JRPG / Adventure / Fantasy"
   },
   {
     "id": 432,
     "name": "X-Men Origins: Wolverine",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 433,
     "name": "Yoshi's Island DS",
     "console": "NDS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 434,
     "name": "The Legend of Zelda: Phantom Hourglass",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 435,
     "name": "The Legend of Zelda: Spirit Tracks",
     "console": "NDS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 436,
     "name": "Cursed Mountain",
     "console": "Wii",
-    "genre": "Aventura / Supervivencia"
+    "genre": "Adventure / Survival"
   },
   {
     "id": 437,
     "name": "Deadly Creatures",
     "console": "Wii",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 438,
     "name": "Donkey Kong Country Returns",
     "console": "Wii",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 439,
     "name": "Excitebots",
     "console": "Wii",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 440,
     "name": "Fire Emblem: Radiant Dawn",
     "console": "Wii",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 441,
     "name": "Little King's Story",
     "console": "Wii",
-    "genre": "Estrategia / Simulación"
+    "genre": "Strategy / Simulation"
   },
   {
     "id": 442,
     "name": "MadWorld",
     "console": "Wii",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 443,
     "name": "Metroid Prime 3",
     "console": "Wii",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 444,
     "name": "Muramasa: The Demon Blade",
     "console": "Wii",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 445,
     "name": "New Super Mario Bros. Wii",
     "console": "Wii",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 446,
     "name": "Pandora’s Tower",
     "console": "Wii",
-    "genre": "Acción / RPG"
+    "genre": "Action / RPG"
   },
   {
     "id": 447,
     "name": "Red Steel 2",
     "console": "Wii",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 448,
     "name": "Scarface",
     "console": "Wii",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 449,
     "name": "Sin and Punishment: Star Successor",
     "console": "Wii",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 450,
     "name": "Super Mario Galaxy",
     "console": "Wii",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 451,
     "name": "Super Mario Galaxy 2",
     "console": "Wii",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 452,
     "name": "Super Paper Mario",
     "console": "Wii",
-    "genre": "Plataformas / Aventura"
+    "genre": "Platformer / Adventure"
   },
   {
     "id": 453,
     "name": "Super Smash Bros. Brawl",
     "console": "Wii",
-    "genre": "Lucha / Multijugador"
+    "genre": "Fighting / Multiplayer"
   },
   {
     "id": 454,
     "name": "Trauma Center: Second Opinion",
     "console": "Wii",
-    "genre": "Acción / Simulación"
+    "genre": "Action / Simulation"
   },
   {
     "id": 455,
     "name": "Trauma Team",
     "console": "Wii",
-    "genre": "Acción / Simulación"
+    "genre": "Action / Simulation"
   },
   {
     "id": 456,
     "name": "Wario Land: Shake It",
     "console": "Wii",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 457,
     "name": "Zack & Wiki",
     "console": "Wii",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 458,
@@ -2763,13 +2763,13 @@
     "id": 461,
     "name": "Animal Crossing: New Leaf",
     "console": "3DS",
-    "genre": "Simulación / Vida"
+    "genre": "Simulation / Life Sim"
   },
   {
     "id": 462,
     "name": "BoxBoy!",
     "console": "3DS",
-    "genre": "Plataformas / Puzzle"
+    "genre": "Platformer / Puzzle"
   },
   {
     "id": 463,
@@ -2787,13 +2787,13 @@
     "id": 465,
     "name": "Curtain Call: Final Fantasy",
     "console": "3DS",
-    "genre": "Música / Ritmo"
+    "genre": "Music / Rhythm"
   },
   {
     "id": 466,
     "name": "Dillon's Rolling Western",
     "console": "3DS",
-    "genre": "Acción / Estrategia"
+    "genre": "Action / Strategy"
   },
   {
     "id": 467,
@@ -2805,31 +2805,31 @@
     "id": 468,
     "name": "Ever Oasis",
     "console": "3DS",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 469,
     "name": "Fantasy Life",
     "console": "3DS",
-    "genre": "RPG / Simulación"
+    "genre": "RPG / Simulation"
   },
   {
     "id": 470,
     "name": "Fire Emblem Awakening",
     "console": "3DS",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 471,
     "name": "Fire Emblem Fates",
     "console": "3DS",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 472,
     "name": "Fire Emblem Echoes: Shadows of Valentia",
     "console": "3DS",
-    "genre": "Estrategia / RPG"
+    "genre": "Strategy / RPG"
   },
   {
     "id": 473,
@@ -2841,31 +2841,31 @@
     "id": 474,
     "name": "Kirby: Planet Robobot",
     "console": "3DS",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 475,
     "name": "Kirby: Triple Deluxe",
     "console": "3DS",
-    "genre": "Plataformas / Acción"
+    "genre": "Platformer / Action"
   },
   {
     "id": 476,
     "name": "Kirby's Epic Yarn",
     "console": "3DS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 477,
     "name": "Little Battlers Experience",
     "console": "3DS",
-    "genre": "RPG de acción"
+    "genre": "ARPG"
   },
   {
     "id": 478,
     "name": "Luigi's Mansion: Dark Moon",
     "console": "3DS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 479,
@@ -2895,13 +2895,13 @@
     "id": 483,
     "name": "Metroid: Samus Returns",
     "console": "3DS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 484,
     "name": "New Super Mario Bros. 2",
     "console": "3DS",
-    "genre": "Plataformas"
+    "genre": "Platformer"
   },
   {
     "id": 485,
@@ -2913,7 +2913,7 @@
     "id": 486,
     "name": "Professor Layton vs. Phoenix Wright: Ace Attorney",
     "console": "3DS",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 487,
@@ -2943,49 +2943,49 @@
     "id": 491,
     "name": "The Legend of Zelda: Ocarina of Time 3D",
     "console": "3DS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 492,
     "name": "The Legend of Zelda: Majora's Mask 3D",
     "console": "3DS",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 493,
     "name": "Super Mario RPG",
     "console": "Switch",
-    "genre": "RPG / Aventura"
+    "genre": "RPG / Adventure"
   },
   {
     "id": 494,
     "name": "Luigi's Mansion 3",
     "console": "Switch",
-    "genre": "Aventura / Puzzle"
+    "genre": "Adventure / Puzzle"
   },
   {
     "id": 495,
     "name": "Pikmin 3",
     "console": "Switch",
-    "genre": "Estrategia / Aventura"
+    "genre": "Strategy / Adventure"
   },
   {
     "id": 496,
     "name": "Armada",
     "console": "DreamCast",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 497,
     "name": "Bangai-o",
     "console": "DreamCast",
-    "genre": "Acción"
+    "genre": "Action"
   },
   {
     "id": 498,
     "name": "Carrier",
     "console": "DreamCast",
-    "genre": "Acción / Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 499,
@@ -3003,37 +3003,37 @@
     "id": 501,
     "name": "Crazy Taxi 2",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 502,
     "name": "Daytona USA",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 503,
     "name": "Egg Elemental Gimmick Gear",
     "console": "DreamCast",
-    "genre": "Aventura"
+    "genre": "Adventure"
   },
   {
     "id": 504,
     "name": "Gundam Side Story 0079: Rise from the Ashes",
     "console": "DreamCast",
-    "genre": "Acción / Shooter"
+    "genre": "Action / Shooter"
   },
   {
     "id": 505,
     "name": "Illbleed",
     "console": "DreamCast",
-    "genre": "Horror / Aventura"
+    "genre": "Horror / Adventure"
   },
   {
     "id": 506,
     "name": "Industrial Spy: Operation Espionage",
     "console": "DreamCast",
-    "genre": "Acción / Sigilo"
+    "genre": "Action / Stealth"
   },
   {
     "id": 507,
@@ -3045,19 +3045,19 @@
     "id": 508,
     "name": "Mars Matrix: Hyper Solid Shooting",
     "console": "DreamCast",
-    "genre": "Shoot 'em up"
+    "genre": "Shoot 'em Up"
   },
   {
     "id": 509,
     "name": "Metropolis Street Racer",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 510,
     "name": "Propeller Arena",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 511,
@@ -3069,13 +3069,13 @@
     "id": 512,
     "name": "Record of Lodoss War: Advent of Cardice",
     "console": "DreamCast",
-    "genre": "Acción/ Aventura"
+    "genre": "Action / Adventure"
   },
   {
     "id": 513,
     "name": "Resident Evil Code Veronica",
     "console": "DreamCast",
-    "genre": "Horror / Supervivencia"
+    "genre": "Survival Horror"
   },
   {
     "id": 514,
@@ -3087,30 +3087,30 @@
     "id": 515,
     "name": "Space Channel 5",
     "console": "DreamCast",
-    "genre": "Ritmo / Música"
+    "genre": "Rhythm / Music"
   },
   {
     "id": 516,
     "name": "Tokyo Xtreme Racer 2",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 517,
     "name": "Toy Commander",
     "console": "DreamCast",
-    "genre": "Acción / Estrategia"
+    "genre": "Action / Strategy"
   },
   {
     "id": 518,
     "name": "Wacky Racers",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   },
   {
     "id": 519,
     "name": "Zusar Vasar",
     "console": "DreamCast",
-    "genre": "Carreras"
+    "genre": "Racing"
   }
 ]

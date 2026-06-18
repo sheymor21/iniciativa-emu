@@ -6,10 +6,13 @@ import {
   adminForm,
   adminGameConsole,
   adminGameGenre,
+  adminGameGenreSelect,
   adminGameId,
   adminGameName,
   adminGamesTableBody,
+  adminGenresList,
   adminModal,
+  adminNewGenreName,
   adminSearch,
   adminSubmitBtn,
   adminTabs,
@@ -19,6 +22,7 @@ import {
   editForm,
   editGameConsole,
   editGameGenre,
+  editGameGenreSelect,
   editGameId,
   editGameName,
   editModal,
@@ -49,6 +53,16 @@ import { hashPassword } from './utils.js';
 import { loadGames, applyFilters } from './games.js';
 import { saveCurrentUser, renderAuthUI } from './auth.js';
 import { loadSuggestions, renderAdminSuggestions } from './suggestions.js';
+import { GenreSelect } from './genre-select.js';
+
+/** @type {string[]} */
+let adminGenres = [];
+
+/** @type {GenreSelect|null} */
+let adminGenreSelect = null;
+
+/** @type {GenreSelect|null} */
+let editGenreSelect = null;
 
 /**
  * Switch visible admin tab.
@@ -66,6 +80,10 @@ export function switchAdminTab(tabName) {
     panel.classList.toggle('active', active);
     panel.style.display = active ? 'block' : 'none';
   });
+
+  if (tabName === 'genres') {
+    renderAdminGenres();
+  }
 }
 
 /**
@@ -89,12 +107,99 @@ export function resetAdminForm() {
   adminForm?.reset();
   if (adminGameId) adminGameId.value = '';
   if (adminSubmitBtn) adminSubmitBtn.textContent = 'Guardar';
+  adminGenreSelect?.setValue('');
+}
+
+/**
+ * Load the canonical genre list from Turso.
+ */
+export async function loadAdminGenres() {
+  try {
+    const { rows } = await turso.execute('SELECT name FROM genres ORDER BY name');
+    adminGenres = rows.map(r => String(r.name));
+  } catch (err) {
+    console.error('Error loading genres:', err);
+    adminGenres = [];
+  }
+}
+
+/**
+ * Initialize or refresh the genre selectors in the add/edit forms.
+ */
+export function initGenreSelectors() {
+  if (adminGameGenreSelect && adminGameGenre) {
+    adminGenreSelect = new GenreSelect(adminGameGenreSelect, adminGameGenre, adminGenres);
+  }
+  if (editGameGenreSelect && editGameGenre) {
+    editGenreSelect = new GenreSelect(editGameGenreSelect, editGameGenre, adminGenres);
+  }
+}
+
+/**
+ * Render the genre management list.
+ */
+export function renderAdminGenres() {
+  if (!adminGenresList) return;
+
+  if (adminGenres.length === 0) {
+    adminGenresList.innerHTML = '<span class="genre-placeholder">No hay géneros registrados.</span>';
+    return;
+  }
+
+  adminGenresList.innerHTML = adminGenres.map(genre => `
+    <span class="genre-management-item">
+      ${escapeHtml(genre)}
+      <button type="button" class="btn btn-danger" data-genre="${escapeHtml(genre)}" aria-label="Eliminar ${escapeHtml(genre)}">×</button>
+    </span>
+  `).join('');
+
+  for (const btn of adminGenresList.querySelectorAll('button')) {
+    btn.addEventListener('click', () => deleteGenre(btn.dataset.genre));
+  }
+}
+
+/**
+ * Add a new genre from the management panel.
+ */
+export async function addGenre() {
+  const name = adminNewGenreName?.value.trim();
+  if (!name) return;
+
+  try {
+    await turso.execute('INSERT INTO genres (name) VALUES (?)', [name]);
+    adminNewGenreName.value = '';
+    await loadAdminGenres();
+    renderAdminGenres();
+    adminGenreSelect?.setGenres(adminGenres);
+    editGenreSelect?.setGenres(adminGenres);
+  } catch (err) {
+    alert('Error al agregar género: ' + (err instanceof Error ? err.message : String(err)));
+  }
+}
+
+/**
+ * Delete a genre from the management panel.
+ * @param {string} name
+ */
+export async function deleteGenre(name) {
+  if (!name) return;
+  if (!confirm(`¿Eliminar el género "${name}"? Los juegos que lo usen lo conservarán hasta que se editen.`)) return;
+
+  try {
+    await turso.execute('DELETE FROM genres WHERE name = ?', [name]);
+    await loadAdminGenres();
+    renderAdminGenres();
+    adminGenreSelect?.setGenres(adminGenres);
+    editGenreSelect?.setGenres(adminGenres);
+  } catch (err) {
+    alert('Error al eliminar género: ' + (err instanceof Error ? err.message : String(err)));
+  }
 }
 
 /**
  * Open the admin modal and load data.
  */
-export function openAdminModal() {
+export async function openAdminModal() {
   if (!isAdmin()) {
     alert('No tienes permisos de administración. Inicia sesión como administrador.');
     return;
@@ -104,6 +209,9 @@ export function openAdminModal() {
   switchAdminTab('add');
   renderAdminConsolesList();
   renderAdminGames();
+  await loadAdminGenres();
+  renderAdminGenres();
+  initGenreSelectors();
   loadUsers().then(renderAdminUsers).catch(err => {
     console.error('Error loading users:', err);
   });
@@ -197,6 +305,7 @@ export function openEditModal(gameId) {
   editGameName.value = game.name;
   editGameConsole.value = game.console;
   editGameGenre.value = game.genre;
+  editGenreSelect?.setValue(game.genre);
 
   editConsolesList.innerHTML = '';
   for (const c of [...new Set(allGames.map(g => g.console))].sort()) {
@@ -219,6 +328,7 @@ export function closeEditModal() {
   if (editGameId) editGameId.value = '';
   if (editRatingsList) editRatingsList.innerHTML = '';
   if (editReviewsList) editReviewsList.innerHTML = '';
+  editGenreSelect?.setValue('');
 }
 
 /**

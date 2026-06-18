@@ -78,6 +78,9 @@ export const adminGameConsole = document.getElementById('admin-game-console');
 /** @type {HTMLInputElement|null} */
 export const adminGameGenre = document.getElementById('admin-game-genre');
 
+/** @type {HTMLDivElement|null} */
+export const adminGameGenreSelect = document.getElementById('admin-game-genre-select');
+
 /** @type {HTMLDataListElement|null} */
 export const adminConsolesList = document.getElementById('admin-consoles-list');
 
@@ -107,6 +110,9 @@ export const editGameConsole = document.getElementById('edit-game-console');
 
 /** @type {HTMLInputElement|null} */
 export const editGameGenre = document.getElementById('edit-game-genre');
+
+/** @type {HTMLDivElement|null} */
+export const editGameGenreSelect = document.getElementById('edit-game-genre-select');
 
 /** @type {HTMLDataListElement|null} */
 export const editConsolesList = document.getElementById('edit-consoles-list');
@@ -281,3 +287,12 @@ export const mySuggestionsTableBody = document.querySelector('#my-suggestions-ta
 
 /** @type {HTMLDivElement|null} */
 export const paginationContainer = document.getElementById('pagination-container');
+
+/** @type {HTMLInputElement|null} */
+export const adminNewGenreName = document.getElementById('admin-new-genre-name');
+
+/** @type {HTMLButtonElement|null} */
+export const adminAddGenreBtn = document.getElementById('admin-add-genre-btn');
+
+/** @type {HTMLDivElement|null} */
+export const adminGenresList = document.getElementById('admin-genres-list');

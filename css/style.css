@@ -580,6 +580,159 @@ input:focus, select:focus, textarea:focus {
   gap: 0.5rem;
 }
 
+.genre-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.genre-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+.genre-toggle-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.genre-toggle.open .genre-toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.genre-dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--surface);
+  border: 1px solid var(--surface-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.genre-options {
+  overflow-y: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.genre-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: calc(var(--radius) / 2);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.genre-option:hover {
+  background: var(--surface-light);
+}
+
+.genre-option input {
+  width: auto;
+  margin: 0;
+}
+
+.genre-add {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--surface-light);
+}
+
+.genre-add input {
+  flex: 1;
+  min-width: 0;
+}
+
+.genre-add button {
+  white-space: nowrap;
+}
+
+.genre-empty {
+  padding: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.genre-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-height: 1.5rem;
+}
+
+.genre-placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.genre-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.genre-chip-remove {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0 0 0.25rem;
+  opacity: 0.8;
+}
+
+.genre-chip-remove:hover {
+  opacity: 1;
+}
+
+.genre-management-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.genre-management-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg);
+  border: 1px solid var(--surface-light);
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.genre-management-item button {
+  padding: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.8rem;
+}
+
 .admin-toolbar {
   margin-bottom: 0.75rem;
 }

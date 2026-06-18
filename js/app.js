@@ -4,10 +4,13 @@ import {
   accountBtn,
   accountForm,
   accountModal,
+  adminAddGenreBtn,
   adminBtn,
   adminCancelBtn,
   adminForm,
   adminModal,
+  adminNewGenreName,
+  adminNewUserBtn,
   adminSearch,
   adminSuggestionFilter,
   adminTabs,
@@ -80,6 +83,7 @@ import {
   voteReview,
 } from './reviews.js';
 import {
+  addGenre,
   closeAdminModal,
   closeEditModal,
   closeUserModal,
@@ -182,6 +186,9 @@ adminSuggestionFilter?.addEventListener('change', renderAdminSuggestions);
 adminTabs.forEach(tab => {
   tab.addEventListener('click', () => switchAdminTab(tab.dataset.tab || ''));
 });
+adminAddGenreBtn?.addEventListener('click', addGenre);
+adminNewGenreName?.addEventListener('keydown', e => { if (e.key === 'Enter') addGenre(); });
+adminNewUserBtn?.addEventListener('click', () => openUserModal(null));
 
 // Edit modal.
 closeEditBtn?.addEventListener('click', closeEditModal);

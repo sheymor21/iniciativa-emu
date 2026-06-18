@@ -104,6 +104,7 @@
 
       <div class="admin-tabs" role="tablist" aria-label="Secciones de administración">
         <button class="admin-tab active" data-tab="add" role="tab" aria-selected="true">Agregar juego</button>
+        <button class="admin-tab" data-tab="genres" role="tab" aria-selected="false">Géneros</button>
         <button class="admin-tab" data-tab="users" role="tab" aria-selected="false">Usuarios</button>
         <button class="admin-tab" data-tab="suggestions" role="tab" aria-selected="false">Sugerencias</button>
         <button class="admin-tab" data-tab="list" role="tab" aria-selected="false">Listado</button>
@@ -123,13 +124,27 @@
           </div>
           <div class="filter-group">
             <label for="admin-game-genre">Género</label>
-            <input type="text" id="admin-game-genre" required maxlength="100">
+            <input type="hidden" id="admin-game-genre" required>
+            <div id="admin-game-genre-select"></div>
           </div>
           <div class="admin-form-actions">
             <button type="submit" class="btn btn-primary" id="admin-submit-btn">Guardar</button>
             <button type="button" class="btn btn-secondary" id="admin-cancel-btn">Cancelar</button>
           </div>
         </form>
+      </section>
+
+      <section class="admin-tab-panel" data-panel="genres" style="display:none;">
+        <div class="admin-toolbar">
+          <div class="filter-group" style="max-width: 400px;">
+            <label for="admin-new-genre-name">Nuevo género</label>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="text" id="admin-new-genre-name" placeholder="Nombre del género" maxlength="50">
+              <button type="button" id="admin-add-genre-btn" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </div>
+        <div class="genre-management-list" id="admin-genres-list"></div>
       </section>
 
       <section class="admin-tab-panel" data-panel="users" id="admin-users-section" style="display:none;">
@@ -224,7 +239,8 @@
           </div>
           <div class="filter-group">
             <label for="edit-game-genre">Género</label>
-            <input type="text" id="edit-game-genre" required maxlength="100">
+            <input type="hidden" id="edit-game-genre" required>
+            <div id="edit-game-genre-select"></div>
           </div>
           <div class="admin-form-actions">
             <button type="submit" class="btn btn-primary" id="edit-save-btn">Guardar cambios</button>

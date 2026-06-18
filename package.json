@@ -4,6 +4,8 @@
   "description": "Static GitHub Pages site for the Jueguiños game list with Turso-backed ratings and reviews.",
   "scripts": {
     "parse": "node scripts/parse-games.js",
+    "translate-source": "node scripts/translate-source.js",
+    "normalize-genres": "node scripts/normalize-genres.js",
     "setup-db": "node scripts/setup-turso.js",
     "clean-db": "node scripts/clean-db.js"
   },
