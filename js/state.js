@@ -14,6 +14,7 @@
  * @property {string} name
  * @property {string} console
  * @property {string} genre
+ * @property {string} [cover_url]
  * @property {number} avgScore
  * @property {number} ratingCount
  * @property {string} ratingVotes
