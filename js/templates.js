@@ -77,7 +77,9 @@ export function gameCard(game, options, _authorName, _authorReadonly) {
   ` : '';
 
   const coverHtml = game.cover_url ? `
-    <img class="game-cover" loading="lazy" src="${escapeHtml(game.cover_url)}" alt="Carátula de ${escapeHtml(game.name)}">
+    <div class="game-cover-wrapper">
+      <img class="game-cover" loading="lazy" src="${escapeHtml(game.cover_url)}" alt="Carátula de ${escapeHtml(game.name)}">
+    </div>
   ` : '';
 
   return `

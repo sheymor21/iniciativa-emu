@@ -200,11 +200,19 @@ input:focus, select:focus, textarea:focus {
 }
 
 .game-cover {
-  max-height: 200px;
   width: 100%;
-  object-fit: cover;
+  max-height: 350px;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.game-cover-wrapper {
+  width: 100%;
   border-radius: 8px;
   margin-bottom: 0.25rem;
+  background: var(--bg);
+  overflow: hidden;
 }
 
 .game-header {
