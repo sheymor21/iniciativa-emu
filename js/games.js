@@ -250,6 +250,7 @@ export function refreshGamesUI() {
 export function goToPage(page) {
   setCurrentPage(page);
   applyFilters();
+  window.scrollTo(0, 0);
 }
 
 /**
@@ -288,19 +289,19 @@ function renderPagination(totalCount, totalPages) {
   const nextDisabled = currentPage === totalPages ? 'disabled' : '';
 
   let html = '<div class="pagination">';
-  html += `<button class="btn btn-secondary" ${prevDisabled} onclick="window.goToPage(${currentPage - 1})">Anterior</button>`;
+  html += `<button type="button" class="btn btn-secondary" ${prevDisabled} onclick="window.goToPage(${currentPage - 1})">Anterior</button>`;
   html += '<div class="pagination-pages">';
   for (const p of pages) {
     if (p === null) {
       html += '<span class="pagination-ellipsis">…</span>';
     } else if (p === currentPage) {
-      html += `<button class="btn btn-primary active" disabled>${p}</button>`;
+      html += `<button type="button" class="btn btn-primary active" disabled>${p}</button>`;
     } else {
-      html += `<button class="btn btn-secondary" onclick="window.goToPage(${p})">${p}</button>`;
+      html += `<button type="button" class="btn btn-secondary" onclick="window.goToPage(${p})">${p}</button>`;
     }
   }
   html += '</div>';
-  html += `<button class="btn btn-secondary" ${nextDisabled} onclick="window.goToPage(${currentPage + 1})">Siguiente</button>`;
+  html += `<button type="button" class="btn btn-secondary" ${nextDisabled} onclick="window.goToPage(${currentPage + 1})">Siguiente</button>`;
   html += '</div>';
 
   paginationContainer.innerHTML = html;
