@@ -278,6 +278,16 @@ input:focus, select:focus, textarea:focus {
   cursor: default;
 }
 
+.copy-btn {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .game-genre {
   color: var(--text-muted);
 }

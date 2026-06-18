@@ -85,3 +85,19 @@ export function isUniqueConstraintError(err) {
 export function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
+
+/**
+ * Copy a game name to the clipboard.
+ * @param {string} name
+ * @param {HTMLElement} btn
+ */
+export async function copyGameName(name, btn) {
+  try {
+    await navigator.clipboard.writeText(name);
+    const original = btn.textContent;
+    btn.textContent = '✓';
+    setTimeout(() => { btn.textContent = original; }, 1200);
+  } catch {
+    // ignore
+  }
+}

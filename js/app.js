@@ -55,6 +55,7 @@ import {
 } from './elements.js';
 import { currentUser, draggedPlayOrderId, loadCurrentUser, setCurrentPage } from './state.js';
 import { applyFilters, goToPage, loadGames } from './games.js';
+import { copyGameName } from './utils.js';
 import {
   closeAccountModal,
   login,
@@ -141,6 +142,7 @@ Object.assign(window, {
   openMySuggestionsModal,
   closeMySuggestionsModal,
   goToPage,
+  copyGameName,
 });
 
 // Filter inputs.

@@ -80,6 +80,7 @@ export function gameCard(game, options, _authorName, _authorReadonly) {
     <div class="game-header">
       <h2 class="game-title">${escapeHtml(game.name)}</h2>
       <div class="game-header-actions">
+        <button class="btn btn-icon copy-btn" onclick="copyGameName('${escapeHtml(game.name)}', this)" title="Copiar nombre" aria-label="Copiar nombre">⧉</button>
         ${favoriteHtml}
         ${playedHtml}
         ${playOrderCardHtml}
