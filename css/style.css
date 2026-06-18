@@ -593,73 +593,185 @@ input:focus, select:focus, textarea:focus {
   align-items: center;
   width: 100%;
   text-align: left;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--surface-light);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.genre-toggle:hover {
+  border-color: var(--accent-light);
+}
+
+.genre-toggle.open {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.genre-toggle-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .genre-toggle-arrow {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
   transition: transform 0.2s;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
 }
 
 .genre-toggle.open .genre-toggle-arrow {
   transform: rotate(180deg);
 }
 
-.genre-dropdown {
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: var(--surface);
-  border: 1px solid var(--surface-light);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  max-height: 260px;
+.genre-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.genre-options {
-  overflow-y: auto;
-  padding: 0.5rem;
+.genre-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.genre-modal-content {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 420px;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--surface-light);
+}
+
+.genre-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--surface-light);
+}
+
+.genre-modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.genre-modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.genre-modal-close:hover {
+  color: var(--text);
+}
+
+.genre-modal-search {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--surface-light);
+}
+
+.genre-modal-search input {
+  width: 100%;
+}
+
+.genre-modal-options {
+  overflow-y: auto;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .genre-option {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.5rem;
-  border-radius: calc(var(--radius) / 2);
+  gap: 0.6rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background 0.15s;
+  user-select: none;
 }
 
 .genre-option:hover {
   background: var(--surface-light);
 }
 
-.genre-option input {
-  width: auto;
+.genre-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--surface-light);
+  border-radius: 4px;
+  background: var(--surface);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s;
+  flex-shrink: 0;
   margin: 0;
 }
 
-.genre-add {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem;
+.genre-option:hover input[type="checkbox"] {
+  border-color: var(--accent-light);
+}
+
+.genre-option input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.genre-option input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.genre-option:has(input[type="checkbox"]:checked) {
+  color: var(--accent-light);
+}
+
+.genre-modal-footer {
+  padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--surface-light);
+  display: flex;
+  justify-content: flex-end;
 }
 
-.genre-add input {
-  flex: 1;
-  min-width: 0;
-}
-
-.genre-add button {
-  white-space: nowrap;
+.genre-modal-footer button {
+  min-width: 100px;
 }
 
 .genre-empty {
@@ -672,25 +784,32 @@ input:focus, select:focus, textarea:focus {
 .genre-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.4rem;
   min-height: 1.5rem;
 }
 
 .genre-placeholder {
   color: var(--text-muted);
   font-size: 0.85rem;
+  opacity: 0.7;
+  padding: 0.2rem 0;
 }
 
 .genre-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.3rem;
   background: var(--accent);
   color: white;
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: transform 0.1s;
+}
+
+.genre-chip:hover {
+  transform: translateY(-1px);
 }
 
 .genre-chip-remove {
@@ -698,10 +817,11 @@ input:focus, select:focus, textarea:focus {
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1;
   padding: 0 0 0 0.25rem;
-  opacity: 0.8;
+  opacity: 0.7;
+  transition: opacity 0.15s;
 }
 
 .genre-chip-remove:hover {

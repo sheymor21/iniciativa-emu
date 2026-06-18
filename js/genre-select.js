@@ -3,9 +3,8 @@
 /**
  * Custom multi-select genre picker.
  *
- * Builds a dropdown of checkboxes from a list of genre names, renders selected
- * genres as removable chips, and keeps a hidden input in sync with the joined
- * value (" / "). Also provides an inline "add genre" control.
+ * Renders a toggle button + chips. Clicking the toggle opens a modal
+ * where the user can search and check genres. A hidden input stays in sync.
  */
 
 import { escapeHtml } from './utils.js';
@@ -29,6 +28,8 @@ export class GenreSelect {
     this.selected = new Set();
     /** @type {(genres: string[]) => void | undefined} */
     this.onChange = options.onChange;
+    /** @type {string} */
+    this.searchQuery = '';
 
     this.render();
     this.setValue(hiddenInput.value);
@@ -44,37 +45,51 @@ export class GenreSelect {
           <span class="genre-toggle-text">Seleccionar géneros</span>
           <span class="genre-toggle-arrow">▼</span>
         </button>
-        <div class="genre-dropdown" style="display:none;">
-          <div class="genre-options"></div>
-          <div class="genre-add">
-            <input type="text" class="genre-add-input" placeholder="Nuevo género..." maxlength="50">
-            <button type="button" class="genre-add-btn btn btn-primary">Agregar</button>
+        <div class="genre-chips"></div>
+        <div class="genre-modal" style="display:none;">
+          <div class="genre-modal-backdrop"></div>
+          <div class="genre-modal-content">
+            <div class="genre-modal-header">
+              <h3>Seleccionar géneros</h3>
+              <button type="button" class="genre-modal-close" aria-label="Cerrar">×</button>
+            </div>
+            <div class="genre-modal-search">
+              <input type="text" class="genre-modal-search-input" placeholder="Buscar género...">
+            </div>
+            <div class="genre-modal-options"></div>
+            <div class="genre-modal-footer">
+              <button type="button" class="genre-modal-done btn btn-primary">Listo</button>
+            </div>
           </div>
         </div>
-        <div class="genre-chips"></div>
       </div>
     `;
 
     this.toggleBtn = this.container.querySelector('.genre-toggle');
-    this.dropdown = this.container.querySelector('.genre-dropdown');
-    this.optionsEl = this.container.querySelector('.genre-options');
     this.chipsEl = this.container.querySelector('.genre-chips');
-    this.addInput = this.container.querySelector('.genre-add-input');
-    this.addBtn = this.container.querySelector('.genre-add-btn');
+    this.modal = this.container.querySelector('.genre-modal');
+    this.modalBackdrop = this.container.querySelector('.genre-modal-backdrop');
+    this.modalCloseBtn = this.container.querySelector('.genre-modal-close');
+    this.modalDoneBtn = this.container.querySelector('.genre-modal-done');
+    this.searchInput = this.container.querySelector('.genre-modal-search-input');
+    this.optionsEl = this.container.querySelector('.genre-modal-options');
 
-    this.toggleBtn?.addEventListener('click', () => this.toggleDropdown());
-    this.addBtn?.addEventListener('click', () => this.handleAddGenre());
-    this.addInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        this.handleAddGenre();
-      }
+    this.toggleBtn?.addEventListener('click', () => this.openModal());
+    this.modalBackdrop?.addEventListener('click', () => this.closeModal());
+    this.modalCloseBtn?.addEventListener('click', () => this.closeModal());
+    this.modalDoneBtn?.addEventListener('click', () => this.closeModal());
+    this.searchInput?.addEventListener('input', (e) => {
+      this.searchQuery = (/** @type {HTMLInputElement} */ (e.target)).value.trim().toLowerCase();
+      this.renderOptions();
+    });
+    this.searchInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') e.preventDefault();
+      if (e.key === 'Escape') this.closeModal();
     });
 
-    // Close dropdown when clicking outside.
-    document.addEventListener('click', (e) => {
-      if (!this.container.contains(/** @type {Node} */ (e.target))) {
-        this.closeDropdown();
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isOpen()) {
+        this.closeModal();
       }
     });
 
@@ -83,17 +98,49 @@ export class GenreSelect {
   }
 
   /**
-   * Render the checkbox list of available genres.
+   * @returns {boolean}
+   */
+  isOpen() {
+    return this.modal?.style.display !== 'none';
+  }
+
+  /**
+   * Open the modal.
+   */
+  openModal() {
+    if (!this.modal || !this.searchInput) return;
+    this.searchQuery = '';
+    this.searchInput.value = '';
+    this.renderOptions();
+    this.modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => this.searchInput?.focus(), 10);
+  }
+
+  /**
+   * Close the modal.
+   */
+  closeModal() {
+    if (this.modal) this.modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  /**
+   * Render the checkbox list of available genres (filtered by search).
    */
   renderOptions() {
     if (!this.optionsEl) return;
 
-    if (this.allGenres.length === 0) {
+    const filtered = this.searchQuery
+      ? this.allGenres.filter(g => g.toLowerCase().includes(this.searchQuery))
+      : this.allGenres;
+
+    if (filtered.length === 0) {
       this.optionsEl.innerHTML = '<div class="genre-empty">No hay géneros disponibles.</div>';
       return;
     }
 
-    this.optionsEl.innerHTML = this.allGenres.map(genre => `
+    this.optionsEl.innerHTML = filtered.map(genre => `
       <label class="genre-option">
         <input type="checkbox" value="${escapeHtml(genre)}" ${this.selected.has(genre) ? 'checked' : ''}>
         <span>${escapeHtml(genre)}</span>
@@ -147,7 +194,7 @@ export class GenreSelect {
    * Add a new genre to the available list and select it.
    */
   handleAddGenre() {
-    const value = this.addInput?.value.trim();
+    const value = this.searchInput?.value.trim();
     if (!value) return;
 
     const normalized = value.replace(/\s+/g, ' ');
@@ -156,12 +203,11 @@ export class GenreSelect {
       this.allGenres.sort((a, b) => a.localeCompare(b));
     }
     this.selected.add(normalized);
-    if (this.addInput) this.addInput.value = '';
     this.sync();
   }
 
   /**
-   * Sync the hidden input, chips, and dropdown state.
+   * Sync the hidden input, chips, and toggle state.
    */
   sync() {
     const value = this.getValue();
@@ -176,26 +222,6 @@ export class GenreSelect {
     if (this.onChange) {
       this.onChange([...this.selected]);
     }
-  }
-
-  /**
-   * Open/close the dropdown.
-   */
-  toggleDropdown() {
-    if (!this.dropdown) return;
-    const isOpen = this.dropdown.style.display !== 'none';
-    this.dropdown.style.display = isOpen ? 'none' : 'block';
-    if (this.toggleBtn) {
-      this.toggleBtn.classList.toggle('open', !isOpen);
-    }
-  }
-
-  /**
-   * Close the dropdown.
-   */
-  closeDropdown() {
-    if (this.dropdown) this.dropdown.style.display = 'none';
-    if (this.toggleBtn) this.toggleBtn.classList.remove('open');
   }
 
   /**
@@ -230,7 +256,6 @@ export class GenreSelect {
    */
   setGenres(genres) {
     this.allGenres = [...genres].sort((a, b) => a.localeCompare(b));
-    // Remove selected genres that no longer exist.
     for (const g of this.selected) {
       if (!this.allGenres.includes(g)) {
         this.selected.delete(g);
