@@ -7,6 +7,8 @@ import {
   adminAddGenreBtn,
   adminBtn,
   adminCancelBtn,
+  adminFilterConsole,
+  adminFilterGenre,
   adminForm,
   adminModal,
   adminNewGenreName,
@@ -184,6 +186,8 @@ adminModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeAdm
 adminForm?.addEventListener('submit', saveAdminGame);
 adminCancelBtn?.addEventListener('click', resetAdminForm);
 adminSearch?.addEventListener('input', renderAdminGames);
+adminFilterConsole?.addEventListener('change', renderAdminGames);
+adminFilterGenre?.addEventListener('change', renderAdminGames);
 adminSuggestionFilter?.addEventListener('change', renderAdminSuggestions);
 adminTabs.forEach(tab => {
   tab.addEventListener('click', () => switchAdminTab(tab.dataset.tab || ''));

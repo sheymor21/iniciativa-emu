@@ -84,6 +84,12 @@ export const adminGameGenreSelect = document.getElementById('admin-game-genre-se
 /** @type {HTMLInputElement|null} */
 export const adminSearch = document.getElementById('admin-search');
 
+/** @type {HTMLSelectElement|null} */
+export const adminFilterConsole = document.getElementById('admin-filter-console');
+
+/** @type {HTMLSelectElement|null} */
+export const adminFilterGenre = document.getElementById('admin-filter-genre');
+
 /** @type {HTMLTableSectionElement|null} */
 export const adminGamesTableBody = document.querySelector('#admin-games-table tbody');
 

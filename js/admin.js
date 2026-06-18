@@ -14,6 +14,8 @@ import {
   adminGenresCount,
   adminModal,
   adminNewGenreName,
+  adminFilterConsole,
+  adminFilterGenre,
   adminSearch,
   adminSubmitBtn,
   adminTabs,
@@ -231,6 +233,7 @@ export async function openAdminModal() {
   if (adminModal) adminModal.style.display = 'flex';
   switchAdminTab('add');
   renderAdminConsolesList();
+  populateAdminListFilters();
   renderAdminGames();
   await loadAdminGenres();
   renderAdminGenres();
@@ -252,18 +255,56 @@ export function closeAdminModal() {
 }
 
 /**
+ * Populate the admin list filter dropdowns.
+ */
+export function populateAdminListFilters() {
+  if (!adminFilterConsole || !adminFilterGenre) return;
+
+  const consoles = [...new Set(allGames.map(g => g.console))].sort();
+  const genres = [...new Set(allGames.map(g => g.genre))].sort();
+
+  const currentConsole = adminFilterConsole.value;
+  const currentGenre = adminFilterGenre.value;
+
+  adminFilterConsole.innerHTML = '<option value="">Todas las consolas</option>';
+  for (const c of consoles) {
+    const option = document.createElement('option');
+    option.value = c;
+    option.textContent = c;
+    adminFilterConsole.appendChild(option);
+  }
+  adminFilterConsole.value = currentConsole;
+
+  adminFilterGenre.innerHTML = '<option value="">Todos los géneros</option>';
+  for (const g of genres) {
+    const option = document.createElement('option');
+    option.value = g;
+    option.textContent = g;
+    adminFilterGenre.appendChild(option);
+  }
+  adminFilterGenre.value = currentGenre;
+}
+
+/**
  * Render the admin games table.
  */
 export function renderAdminGames() {
   if (!adminGamesTableBody || !adminSearch) return;
 
   const query = adminSearch.value.trim().toLowerCase();
+  const consoleFilter = adminFilterConsole?.value || '';
+  const genreFilter = adminFilterGenre?.value || '';
+
   const filtered = allGames
-    .filter(g =>
-      g.name.toLowerCase().includes(query) ||
-      g.console.toLowerCase().includes(query) ||
-      g.genre.toLowerCase().includes(query),
-    )
+    .filter(g => {
+      const matchesQuery =
+        g.name.toLowerCase().includes(query) ||
+        g.console.toLowerCase().includes(query) ||
+        g.genre.toLowerCase().includes(query);
+      const matchesConsole = !consoleFilter || g.console === consoleFilter;
+      const matchesGenre = !genreFilter || g.genre === genreFilter;
+      return matchesQuery && matchesConsole && matchesGenre;
+    })
     .sort((a, b) => a.name.localeCompare(b.name));
 
   adminGamesTableBody.innerHTML = '';
