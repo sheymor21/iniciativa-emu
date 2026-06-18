@@ -45,7 +45,6 @@ export class GenreSelect {
           <span class="genre-toggle-text">Seleccionar géneros</span>
           <span class="genre-toggle-arrow">▼</span>
         </button>
-        <div class="genre-chips"></div>
         <div class="genre-modal" style="display:none;">
           <div class="genre-modal-backdrop"></div>
           <div class="genre-modal-content">
@@ -56,6 +55,7 @@ export class GenreSelect {
             <div class="genre-modal-search">
               <input type="text" class="genre-modal-search-input" placeholder="Buscar género...">
             </div>
+            <div class="genre-modal-chips"><div class="genre-chips"></div></div>
             <div class="genre-modal-options"></div>
             <div class="genre-modal-footer">
               <button type="button" class="genre-modal-done btn btn-primary">Listo</button>
@@ -66,7 +66,7 @@ export class GenreSelect {
     `;
 
     this.toggleBtn = this.container.querySelector('.genre-toggle');
-    this.chipsEl = this.container.querySelector('.genre-chips');
+    this.chipsEl = this.container.querySelector('.genre-modal-chips .genre-chips');
     this.modal = this.container.querySelector('.genre-modal');
     this.modalBackdrop = this.container.querySelector('.genre-modal-backdrop');
     this.modalCloseBtn = this.container.querySelector('.genre-modal-close');
