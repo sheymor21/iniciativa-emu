@@ -23,6 +23,7 @@ import {
   adminUsersTableBody,
   editForm,
   editGameConsole,
+  editGameCoverUrl,
   editGameGenre,
   editGameGenreSelect,
   editGameId,
@@ -369,6 +370,7 @@ export function openEditModal(gameId) {
   editGameName.value = game.name;
   editGameGenre.value = game.genre;
   editGenreSelect?.setValue(game.genre);
+  if (editGameCoverUrl) editGameCoverUrl.value = game.cover_url || '';
 
   editGameConsole.innerHTML = '<option value="">Seleccionar consola...</option>';
   for (const c of [...new Set(allGames.map(g => g.console))].sort()) {
@@ -391,6 +393,7 @@ export function closeEditModal() {
   if (editModal) editModal.style.display = 'none';
   editForm?.reset();
   if (editGameId) editGameId.value = '';
+  if (editGameCoverUrl) editGameCoverUrl.value = '';
   if (editRatingsList) editRatingsList.innerHTML = '';
   if (editReviewsList) editReviewsList.innerHTML = '';
   editGenreSelect?.setValue('');
@@ -409,6 +412,7 @@ export async function saveEditGame(event) {
   const name = editGameName.value.trim();
   const consoleName = editGameConsole.value.trim();
   const genre = editGameGenre.value.trim();
+  const coverUrl = editGameCoverUrl?.value.trim() || null;
 
   if (!name || !consoleName || !genre) {
     alert('Completa todos los campos.');
@@ -417,8 +421,8 @@ export async function saveEditGame(event) {
 
   try {
     await turso.execute(
-      'UPDATE games SET name = ?, console = ?, genre = ? WHERE id = ?',
-      [name, consoleName, genre, parseInt(id, 10)],
+      'UPDATE games SET name = ?, console = ?, genre = ?, cover_url = ? WHERE id = ?',
+      [name, consoleName, genre, coverUrl, parseInt(id, 10)],
     );
     await loadGames();
     renderAdminGames();

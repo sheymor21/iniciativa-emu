@@ -117,6 +117,9 @@ export const editGameGenre = document.getElementById('edit-game-genre');
 /** @type {HTMLDivElement|null} */
 export const editGameGenreSelect = document.getElementById('edit-game-genre-select');
 
+/** @type {HTMLInputElement|null} */
+export const editGameCoverUrl = document.getElementById('edit-game-cover-url');
+
 /** @type {HTMLDivElement|null} */
 export const editRatingsList = document.getElementById('edit-ratings-list');
 
