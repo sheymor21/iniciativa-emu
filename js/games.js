@@ -61,7 +61,7 @@ export async function loadGames() {
       FROM games g
       LEFT JOIN ratings r ON r.game_id = g.id
       LEFT JOIN reviews rv ON rv.game_id = g.id
-      GROUP BY g.id, g.name, g.console, g.genre
+      GROUP BY g.id, g.name, g.console, g.genre, g.cover_url
       ORDER BY g.console, g.name
     `);
 
